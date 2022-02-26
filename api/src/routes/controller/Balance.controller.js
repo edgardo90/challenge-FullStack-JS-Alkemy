@@ -6,8 +6,8 @@ const incomeTotal = async(req,res) =>{
         const operationsIncome =  allOperations.filter(el => el.type.toLowerCase() === "ingreso");
         if(operationsIncome.length > 0 ){
            const arrayIncomes = operationsIncome.map(el => { return el.money}) ;
-           let total = arrayIncomes.reduce(function(acumulador , el ){
-               return acumulador + el;
+           let total = arrayIncomes.reduce(function(acumulador , element ){
+               return acumulador + element;
            },0).toString() // lo convierto a string para que lo pueda ver en
         //    total = [total]
         //    console.log(total)
@@ -28,8 +28,8 @@ const expenditureTotal = async(req,res) =>{
         const operationsExpenditure =  allOperations.filter(el => el.type.toLowerCase() === "egreso");
         if(operationsExpenditure.length > 0 ){
            const arrayExpenditures = operationsExpenditure.map(el => { return el.money}) ;
-           let total = arrayExpenditures.reduce(function(acumulador , el ){
-               return acumulador + el;
+           let total = arrayExpenditures.reduce(function(acumulador , element ){
+               return acumulador + element;
            },0).toString() // lo convierto a string para que lo pueda ver en
            return res.status(200).send("-" + total)
         }
@@ -40,7 +40,7 @@ const expenditureTotal = async(req,res) =>{
 }
 
 
-const ingresoTotal = async() =>{
+const incomeAmount = async() =>{
     const allOperations = await Operation.findAll();
     const operationsExpenditure = await  allOperations.filter(el => el.type.toLowerCase() === "ingreso");
     if(operationsExpenditure.length > 0 ){
@@ -53,7 +53,7 @@ const ingresoTotal = async() =>{
     return 0
 }
 
-const egresoTotal = async() =>{
+const ExpenditureAmount = async() =>{
     const allOperations = await Operation.findAll();
     const operationsExpenditure = await  allOperations.filter(el => el.type.toLowerCase() === "egreso");
     if(operationsExpenditure.length > 0 ){
@@ -69,8 +69,8 @@ const egresoTotal = async() =>{
 
 const currentBalance = async(req , res) =>{
     try{
-        const income = await ingresoTotal();
-        const expenditures = await egresoTotal();
+        const income = await incomeAmount();
+        const expenditures = await ExpenditureAmount();
         console.log(income);
         console.log(expenditures);
         let balance = income - expenditures;

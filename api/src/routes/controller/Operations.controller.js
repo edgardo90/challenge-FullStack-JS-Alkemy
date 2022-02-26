@@ -24,10 +24,7 @@ const postOperation = async(req,res)=>{
 const getAllOpetations = async(req,res)=>{
     try{
         const allOperations = await Operation.findAll();
-        if(allOperations.length > 0){
-            return res.status(200).send(allOperations)
-        }
-        return res.status(404).json({error:"no hay operaciones"})
+        return res.status(200).send(allOperations)
     }catch(error){
         res.send(error);
     }
