@@ -71,8 +71,6 @@ const currentBalance = async(req , res) =>{
     try{
         const income = await incomeAmount();
         const expenditures = await ExpenditureAmount();
-        console.log(income);
-        console.log(expenditures);
         let balance = income - expenditures;
         balance = balance.toString()
         return res.status(200).send(balance)
