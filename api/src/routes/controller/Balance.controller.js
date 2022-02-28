@@ -15,7 +15,7 @@ const incomeTotal = async(req,res) =>{
         //    console.log(total)
            return res.status(200).send("+" + total)
         }
-        return res.status(404).json({error:"No hay total de ingresos"})
+        return res.status(200).send("0")
     }catch(error){
         res.send(error);
     }
@@ -33,7 +33,7 @@ const expenditureTotal = async(req,res) =>{
            },0).toString() // lo convierto a string para que lo pueda ver en
            return res.status(200).send("-" + total)
         }
-        return res.status(404).json({error:"No hay total de egresos"})
+        return res.status(200).send("0")
     }catch(error){
         res.send(error);
     }
@@ -61,7 +61,7 @@ const ExpenditureAmount = async() =>{
        let total = arrayExpenditures.reduce(function(acumulador , el ){
            return acumulador + el;
        },0)
-       return total
+       return total 
     }
     return 0
 }
