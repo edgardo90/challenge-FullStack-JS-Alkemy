@@ -5,6 +5,7 @@ import {
     GET_FINAL_INCOME,
     POST_OPERATION,
     DELETE_OPERATION,
+    // PUT_OPERATION,
 } from "./types";
 import axios from "axios";
 
@@ -68,6 +69,22 @@ export function deleteOperation(idOperation){
             })
         }catch(error){
             alert("no se puede eleminar esa operacion") 
+            console.log(error)
+        }
+    }
+}
+
+export function modifyOperation(idOperation , newData){
+    return async function(){
+        try{
+            await axios.put(`http://localhost:3001/operations/${idOperation}`,{
+                name: newData.name,
+                money: newData.money,
+                date: newData.date
+            });
+
+        }catch(error){
+            alert("no se puede modificar esa operacion") 
             console.log(error)
         }
     }

@@ -50,7 +50,7 @@ export default function Table({name ,money ,date , type , id ,  }){
                 <h5>Fecha: {date}
                 <br />
                 Monto: ${money} </h5>
-                <Link to="/createOperation" ><button>Modificar</button></Link>
+                <Link to={`/modifyOperation/${id}`} ><button>Modificar</button></Link>
                 <button onClick={event => handleDelete(event)}  >Eleminar</button>
             </div>
         </div>
