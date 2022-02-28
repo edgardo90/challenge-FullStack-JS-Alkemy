@@ -4,6 +4,7 @@ import {
     GET_FINAL_EXPENDITURE , 
     GET_FINAL_INCOME,
     POST_OPERATION,
+    DELETE_OPERATION,
 } from "./types";
 import axios from "axios";
 
@@ -54,6 +55,21 @@ export function postOperation(payload){
             type : POST_OPERATION,
             json
         })
+    }
+}
+
+export function deleteOperation(idOperation){
+    return async function(dispatch){
+        try{
+            const json = await axios.delete(`http://localhost:3001/operations/${idOperation}`);
+            return dispatch({
+                type: DELETE_OPERATION,
+                payload: json.data,
+            })
+        }catch(error){
+            alert("no se puede eleminar esa operacion") 
+            console.log(error)
+        }
     }
 }
 

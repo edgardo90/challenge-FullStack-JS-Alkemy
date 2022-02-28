@@ -3,7 +3,8 @@ import {
     GET_FINAL_EXPENDITURE,
     GET_FINAL_INCOME, 
     GET_OPERATIONS,
-    POST_OPERATION, } from "../actions/types";
+    POST_OPERATION,
+    DELETE_OPERATION } from "../actions/types";
 
 
 const initialState ={
@@ -45,6 +46,12 @@ function reducer (state=initialState, {type,payload}){
             return{
                 ...state
             }
+
+        case DELETE_OPERATION:{
+            return{
+                ...state
+            }
+        }
 
         default: return state;
     }

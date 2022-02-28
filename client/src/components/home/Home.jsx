@@ -6,6 +6,7 @@ import Balance from "../balance/Balance";
 import Card from "../card/Card";
 import {Link} from "react-router-dom"
 import Paginado from "./Paginado";
+import styles from "./css/Home.module.css"
 
 
 export default function Home(){
@@ -60,15 +61,13 @@ export default function Home(){
 
      return(
          <div>
-             <div>
-                 <button onClick={event => handleClick(event)}>Recargar la app</button>
-                 <Link to="/createOperation" ><button>crear operacion</button> </Link>
+             <div className={styles.selectAndButton}>
+                 <button  className={styles.button}  onClick={event => handleClick(event)}>Recargar la app</button>
+                 <Link to="/createOperation"  ><button  className={styles.button} >Crear operacion</button> </Link>
              </div>
-             <div>
-                <h1 >Presopuesto App</h1>
-             </div>
+                <h1 className={styles.h1} >Presopuesto App</h1>
              <br />
-             <div>
+             <div className={styles.balance} >
                 <Balance
                  finalBalance = {finalBalance}
                  finalIncome = {finalIncome}
@@ -79,19 +78,20 @@ export default function Home(){
              <div>
                  { currentOperations.length > 0 ? currentOperations.map(el =>{
                      return(
-                         <div key={el.id}>
+                         <div key={el.id} className={el.type === "egreso" ? styles.cardEgreso : styles.card} >
                              <Card
                              name = {el.name}
                              type = {el.type}
                              date = {el.date}
                              money = {el.money}
+                             id = {el.id}
                              />
                          </div>
                      )
                  }) : <h1>No hay operaciones</h1>
                    }
              </div>
-             <div>
+             <div className={styles.paginado}>
                  <footer>
                  <Paginado
                  operationsPerPage={operationsPerPage}
