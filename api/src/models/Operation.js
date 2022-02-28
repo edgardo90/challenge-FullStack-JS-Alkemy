@@ -25,7 +25,7 @@ module.exports = (sequelize) => {
     type:{
       type: DataTypes.ENUM,
       values:["ingreso" , "egreso"],
-      allowNull: false
+      allowNull: true
     },
   });
 };
