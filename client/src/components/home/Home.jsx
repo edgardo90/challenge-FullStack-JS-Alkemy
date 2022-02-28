@@ -7,6 +7,7 @@ import Card from "../card/Card";
 import {Link} from "react-router-dom"
 import Paginado from "./Paginado";
 import styles from "./css/Home.module.css"
+import Filtering from "./Filtering";
 
 
 export default function Home(){
@@ -45,7 +46,7 @@ export default function Home(){
          dispatch(getFinalExpenditure() );
      },[dispatch])
 
-    //  console.log(allOperations)
+     console.log(allOperations)
     //  console.log(finalBalance)
     //  console.log(finalIncome)
     //  console.log(finalExpenditure)
@@ -63,6 +64,7 @@ export default function Home(){
          <div>
              <div className={styles.selectAndButton}>
                  <button  className={styles.button}  onClick={event => handleClick(event)}>Recargar la app</button>
+                 <Filtering/>
                  <Link to="/createOperation"  ><button  className={styles.button} >Crear operacion</button> </Link>
              </div>
                 <h1 className={styles.h1} >Presopuesto App</h1>

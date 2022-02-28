@@ -4,11 +4,13 @@ import {
     GET_FINAL_INCOME, 
     GET_OPERATIONS,
     POST_OPERATION,
-    DELETE_OPERATION } from "../actions/types";
+    DELETE_OPERATION,
+    FILTER_TYPE } from "../actions/types";
 
 
 const initialState ={
     operations:[],
+    copyOperations:[],
     balance:[],
     finalIncome:[],
     finalExpenditure:[],
@@ -22,6 +24,7 @@ function reducer (state=initialState, {type,payload}){
             return{
                 ...state,
                 operations: payload,
+                copyOperations: payload,
             }
 
         case GET_BALANCE:
@@ -51,6 +54,15 @@ function reducer (state=initialState, {type,payload}){
             return{
                 ...state
             }
+        }
+
+    case FILTER_TYPE:
+        const allOperations = state.copyOperations; 
+        const statusFilter = payload === "All" ? allOperations :
+        allOperations.filter(el => el.type.toLowerCase()  === payload );
+        return{
+            ...state,
+            operations: statusFilter,
         }
 
         default: return state;

@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./css/Home.module.css"
 
 
 export default function Paginado({allOperations , operationsPerPage, paginado }){
@@ -13,7 +14,7 @@ export default function Paginado({allOperations , operationsPerPage, paginado })
                 {pageNumber && 
                 pageNumber.map( el => {
                     return(
-                        <button key={el} onClick= {() => paginado(el) }  >{el}</button>
+                        <button key={el} onClick= {() => paginado(el) } className={styles.paginadoButton}  >{el}</button>
                     )
                 }) }
             </ul>

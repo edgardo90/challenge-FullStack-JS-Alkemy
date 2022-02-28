@@ -5,7 +5,7 @@ import {
     GET_FINAL_INCOME,
     POST_OPERATION,
     DELETE_OPERATION,
-    // PUT_OPERATION,
+    FILTER_TYPE,
 } from "./types";
 import axios from "axios";
 
@@ -87,6 +87,13 @@ export function modifyOperation(idOperation , newData){
             alert("no se puede modificar esa operacion") 
             console.log(error)
         }
+    }
+}
+
+export function filterType(payload){
+    return{
+        type: FILTER_TYPE,
+        payload,
     }
 }
 

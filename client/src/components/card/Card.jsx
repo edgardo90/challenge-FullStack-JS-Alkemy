@@ -31,11 +31,10 @@ export default function Table({name ,money ,date , type , id ,  }){
         if(opcion){
             alert("borando...")
             dispatch(deleteOperation(id.toLowerCase()) );
-            console.log(id.toLowerCase() )
-            dispatch(getBalance() );
-            dispatch(getFinalIncome() );
-            dispatch(getFinalExpenditure() );
-            dispatch(getOperations() );
+            // dispatch(getBalance() );
+            // dispatch(getFinalIncome() );
+            // dispatch(getFinalExpenditure() );
+            // dispatch(getOperations() );
             alert("Operacion eleminada")
             dispatch(getBalance() );
             dispatch(getFinalIncome() );
@@ -48,7 +47,7 @@ export default function Table({name ,money ,date , type , id ,  }){
         <div>
             <div>
                 <h4 className={styles.leter}>Tipo: {type}</h4>
-                <h2 className={styles.title} > {name} </h2>
+                <h2 className={styles.name} > {name.length <12 ? `Concepto: ${name}` : name } </h2>
                 <h5 className={styles.leter}>Fecha: {date}
                 <br />
                 Monto: ${money} </h5>
