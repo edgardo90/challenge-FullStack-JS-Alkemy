@@ -61,7 +61,7 @@
     border-radius: 15px;
     box-sizing: border-box;
     display: inline-block; /*lo deja en fila tipo en bloke, en este caso fila de 3  */
-    margin: 3%;
+    margin: 4%;
     padding: 1em;
     vertical-align: top;
     width: 33,5%; /* hace que la fila este ordenada  */
@@ -80,7 +80,7 @@
     border-radius: 15px;
     box-sizing: border-box;
     display: inline-block; /*lo deja en fila tipo en bloke, en este caso fila de 3  */
-    margin: 3%;
+    margin: 4%;
     padding: 1em;
     vertical-align: top;
     width: 33,5%; /* hace que la fila este ordenada  */

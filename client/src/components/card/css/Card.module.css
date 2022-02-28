@@ -1,0 +1,53 @@
+.title{   /* cambio el formato del titulo  */
+    text-align: center; /* centro el texto  */
+    font-family: 'Cookie', cursive;
+    /* font-size: 16px; */
+    /* font-weight: bold; */
+    /* margin-top: -35%; */
+    /* height: 60px; */
+    /* margin-bottom: 10%; */
+}
+
+
+.imagen{
+    justify-content: center;
+    object-fit: cover;
+}
+
+.button{
+    /* border: none; */
+    background-color: rgba(233, 142, 119, 0.459);
+    border-radius: 10px;
+    font-family: 'Cookie', cursive;
+}
+.button:hover{   /*cambia el botton cuando el mouse pasa por ahi  */
+    background-color: rgba(241, 92, 81, 0.459);
+    color: rgb(15, 14, 14);
+    padding-left: 10px;/* agrando el button hacia la izquierda  */
+    padding-right: 10px; /* agrando el button hacia la derecha */
+    padding-top: 5px; /*agrando el button hacia arriba  */
+    padding-bottom: 5px; /* agrando el button hacia abajo */
+    border-radius: 15px;
+}
+
+.buttonModify{
+    background-color: rgba(119, 233, 233, 0.459);
+    border-radius: 10px;
+    font-family: 'Cookie', cursive;
+}
+.buttonModify:hover{
+    background-color: rgba(61, 223, 223, 0.459);
+    color: rgb(15, 14, 14);
+    padding-left: 10px;/* agrando el button hacia la izquierda  */
+    padding-right: 10px; /* agrando el button hacia la derecha */
+    padding-top: 5px; /*agrando el button hacia arriba  */
+    padding-bottom: 5px; /* agrando el button hacia abajo */
+    border-radius: 15px;
+}
+
+
+.leter{   /* cambio el formato del titulo  */
+    font-family: 'Cookie', cursive;
+    font-size: 15px;
+    /* margin-left: 20%;      */
+}

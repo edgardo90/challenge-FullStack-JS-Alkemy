@@ -4,6 +4,8 @@ import {useEffect } from "react"
 import { useDispatch } from "react-redux";
 import { deleteOperation , getBalance, getOperations  , getFinalIncome , getFinalExpenditure  } from "../../actions";
 
+import styles from "./css/Card.module.css"
+
 export default function Table({name ,money ,date , type , id ,  }){
     const dispatch = useDispatch();
 
@@ -45,13 +47,13 @@ export default function Table({name ,money ,date , type , id ,  }){
     return(
         <div>
             <div>
-                <h4>Tipo: {type}</h4>
-                <h2>Concepto: {name} </h2>
-                <h5>Fecha: {date}
+                <h4 className={styles.leter}>Tipo: {type}</h4>
+                <h2 className={styles.title} > {name} </h2>
+                <h5 className={styles.leter}>Fecha: {date}
                 <br />
                 Monto: ${money} </h5>
-                <Link to={`/modifyOperation/${id}`} ><button>Modificar</button></Link>
-                <button onClick={event => handleDelete(event)}  >Eleminar</button>
+                <Link to={`/modifyOperation/${id}`} ><button className={styles.buttonModify} >Modificar</button></Link>
+                <button onClick={event => handleDelete(event)} className={styles.button}   >Eleminar</button>
             </div>
         </div>
     )

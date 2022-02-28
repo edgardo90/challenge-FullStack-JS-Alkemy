@@ -7,8 +7,8 @@ export default function Balance( {finalBalance , finalIncome , finalExpenditure 
                 <br />
                 ${finalBalance}
             </h1>
-            <h5>Total de ingresos:  {finalIncome}</h5>
-            <h5>Total de egresos:   {finalExpenditure}</h5>
+            <h5 style={{color: "green"}} >Total de ingresos:  {finalIncome}</h5>
+            <h5 style={{color: "red"}}>Total de egresos:   {finalExpenditure}</h5>
         </div>
     )
 }
