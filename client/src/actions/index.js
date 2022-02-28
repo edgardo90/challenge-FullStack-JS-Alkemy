@@ -90,10 +90,13 @@ export function modifyOperation(idOperation , newData){
     }
 }
 
-export function filterType(payload){
-    return{
-        type: FILTER_TYPE,
-        payload,
+export function filterType(type){
+    return async function(dispatch){
+        const json = await axios.get(`http://localhost:3001/filterOperations/${type}`);
+        return dispatch({
+            type: FILTER_TYPE,
+            payload: json.data,
+        })
     }
 }
 

@@ -2,6 +2,8 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { filterType } from "../../actions";
 
+import styles from "./css/Filtrado.module.css"
+
 export default function Filtering(){
     const dispatch = useDispatch();
 
@@ -9,17 +11,14 @@ export default function Filtering(){
         dispatch(filterType(event.target.value))
     }
 
-    const types = ["ingreso" , "egreso"]
+    // const types = ["ingreso" , "egreso"]
 
     return(
         <div>
-            <select onChange={event => handleFilter(event)}>
+            <select onChange={handleFilter} className={styles.select}>
                 <option value="All">Filtrado por tipo /ingresos y egresos</option>
-                {types.map(el =>{
-                    return(
-                        <option value={el} key={el} >{el}</option>
-                    )
-                })}
+                <option value="ingreso" >Ingresos</option>
+                <option value="egreso">Egresos</option>
             </select>
         </div>
     )

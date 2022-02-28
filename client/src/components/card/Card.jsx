@@ -2,28 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import {useEffect } from "react"
 import { useDispatch } from "react-redux";
-import { deleteOperation , getBalance, getOperations  , getFinalIncome , getFinalExpenditure  } from "../../actions";
+import { deleteOperation , } from "../../actions";
 
 import styles from "./css/Card.module.css"
 
-export default function Table({name ,money ,date , type , id ,  }){
+export default function Table({name ,money ,date , type , id , getBalance, getOperations  , getFinalIncome , getFinalExpenditure  }){
     const dispatch = useDispatch();
-
-    useEffect(()=>{
-        dispatch(getOperations() );
-    },[dispatch]);
-
-    useEffect(()=>{
-        dispatch(getBalance() );
-    },[dispatch]);
-
-    useEffect(()=>{
-        dispatch(getFinalIncome() );
-    },[dispatch]);
-
-    useEffect(()=>{
-        dispatch(getFinalExpenditure() );
-    },[dispatch])
     
     function handleDelete(event){
         event.preventDefault();
@@ -31,10 +15,10 @@ export default function Table({name ,money ,date , type , id ,  }){
         if(opcion){
             alert("borando...")
             dispatch(deleteOperation(id.toLowerCase()) );
-            // dispatch(getBalance() );
-            // dispatch(getFinalIncome() );
-            // dispatch(getFinalExpenditure() );
-            // dispatch(getOperations() );
+            dispatch(getBalance() );
+            dispatch(getFinalIncome() );
+            dispatch(getFinalExpenditure() );
+            dispatch(getOperations() );
             alert("Operacion eleminada")
             dispatch(getBalance() );
             dispatch(getFinalIncome() );

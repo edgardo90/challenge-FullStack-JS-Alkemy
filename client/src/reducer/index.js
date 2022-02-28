@@ -57,12 +57,12 @@ function reducer (state=initialState, {type,payload}){
         }
 
     case FILTER_TYPE:
-        const allOperations = state.copyOperations; 
-        const statusFilter = payload === "All" ? allOperations :
-        allOperations.filter(el => el.type.toLowerCase()  === payload );
+        // const allOperations = state.copyOperations; 
+        // const statusFilter = payload === "All" ? allOperations :
+        // allOperations.filter(el => el.type.toLowerCase()  === payload );
         return{
             ...state,
-            operations: statusFilter,
+            operations: payload,
         }
 
         default: return state;

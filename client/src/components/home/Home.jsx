@@ -6,8 +6,9 @@ import Balance from "../balance/Balance";
 import Card from "../card/Card";
 import {Link} from "react-router-dom"
 import Paginado from "./Paginado";
-import styles from "./css/Home.module.css"
 import Filtering from "./Filtering";
+
+import styles from "./css/Home.module.css"
 
 
 export default function Home(){
@@ -46,7 +47,7 @@ export default function Home(){
          dispatch(getFinalExpenditure() );
      },[dispatch])
 
-     console.log(allOperations)
+    //  console.log(allOperations)
     //  console.log(finalBalance)
     //  console.log(finalIncome)
     //  console.log(finalExpenditure)
@@ -87,6 +88,10 @@ export default function Home(){
                              date = {el.date}
                              money = {el.money}
                              id = {el.id}
+                             getBalance={getBalance}
+                             getOperations={getOperations}
+                             getFinalIncome={getFinalIncome}
+                             getFinalExpenditure={getFinalExpenditure}
                              />
                          </div>
                      )
