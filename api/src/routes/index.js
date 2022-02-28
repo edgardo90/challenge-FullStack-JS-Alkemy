@@ -18,8 +18,8 @@ router.get("/operations", getAllOpetations);
 router.get("/operations/:idOperation",getIdOperation );
 router.delete("/operations/:idOperation", deleteOperation);
 router.put("/operations/:idOperation", modifyOperation);
-router.get("/operationsIncome", getAllIncome);
-router.get("/opertionsExpenditures" , getAllEgress);
+// router.get("/operationsIncome", getAllIncome);
+// router.get("/opertionsExpenditures" , getAllEgress);
 
 router.get("/ingresos" , incomeTotal);
 router.get("/egresos" , expenditureTotal);
