@@ -1,0 +1,85 @@
+.botonHome{
+  margin-top: 5px;
+  margin-left: 5px;
+    border: none;
+    border-radius: 15px;
+    font-family: 'Cookie', cursive;
+    padding-left: 10px;/* agrando el button hacia la izquierda  */
+    padding-right: 10px; /* agrando el button hacia la derecha */
+    padding-top: 5px; /*agrando el button hacia arriba  */
+    padding-bottom: 5px; /* agrando el button hacia abajo */
+    background-color: rgba(41, 74, 219, 0.842)
+}
+.botonHome:hover{
+    background-color: rgba(160, 208, 212, 0.842);
+    color: rgb(11, 2, 51);
+    padding-left: 20px;/* agrando el button hacia la izquierda  */
+    padding-right: 20px; /* agrando el button hacia la derecha */
+    padding-top: 10px; /*agrando el button hacia arriba  */
+    padding-bottom: 10px; /* agrando el button hacia abajo */
+    border-radius: 15px;
+}
+
+
+
+.titulo{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    font-size: 50px;
+    color: rgb(101, 112, 235);
+    font-family: 'Cookie', cursive;
+  }
+
+  .formulario{
+    margin-left: 35%;
+    margin-right: 35%;
+    padding: 50px;
+    font-size: 20px; 
+    background-position: center center;
+    color: rgb(101, 112, 235);
+    font-family: 'Cookie', cursive;
+    box-shadow: 2px 2px 2px 2px rgb(93, 92, 92);
+    background-color: rgb(204, 218, 218);
+    border-radius: 15px;
+  }
+
+  .formulario input{
+    color: rgb(58, 80, 151);
+    border-radius: 7px;
+  }
+
+  .btn{
+    padding-left: 25px;/* agrando el button hacia la izquierda  */
+    padding-right: 25px; /* agrando el button hacia la derecha */
+    padding-top: 5px; /*agrando el button hacia arriba  */
+    padding-bottom: 5px; /* agrando el button hacia abajo */
+    border: none;
+    border-radius: 15px;
+    margin-left: 90px ;
+    font-family: 'Cookie', cursive;
+  }
+  
+
+  .btnCreate{
+    padding-left: 25px;/* agrando el button hacia la izquierda  */
+    padding-right: 25px; /* agrando el button hacia la derecha */
+    padding-top: 5px; /*agrando el button hacia arriba  */
+    padding-bottom: 5px; /* agrando el button hacia abajo */
+    border: none;
+    border-radius: 15px;
+    margin-left: 90px ;
+    font-family: 'Cookie', cursive;
+    background-color: rgba(41, 74, 219, 0.842)
+  }
+
+  
+
+  .btnCreate:hover{
+    padding-top: 7px; /*agrando el button hacia arriba  */
+    padding-bottom: 7px; /* agrando el button hacia abajo */
+    border-radius: 20px;
+    background-color:rgb(138, 208, 236);
+    color:white;
+  }
+
