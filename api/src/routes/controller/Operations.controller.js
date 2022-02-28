@@ -114,5 +114,25 @@ const getAllEgress = async(req,res) =>{
     }
 }
 
+const getFilterType = async(req,res ) =>{
+    try{
+        const{type} = req.params;
+        if(type === "egreso"){
+            const allOperations = await Operation.findAll();
+            const OperationsEgress = allOperations.filter(el => el.type.toLowerCase() === "egreso" );
+            return res.status(200).send(OperationsEgress);
+        }
+        if(type === "ingreso"){
+            const allOperations = await Operation.findAll();
+            const operationsIncome =  allOperations.filter(el => el.type.toLowerCase() === "ingreso");
+            return res.status(200).send(operationsIncome)
+        }
+        const allOperations = await Operation.findAll();
+        return res.status(200).send(allOperations)
+    }catch(error){
+        res.send(error);
+    }
+}
 
-module.exports={postOperation , getAllOpetations, getIdOperation ,deleteOperation, modifyOperation, getAllIncome , getAllEgress};
+
+module.exports={postOperation , getAllOpetations, getIdOperation ,deleteOperation, modifyOperation, getAllIncome , getAllEgress , getFilterType};
