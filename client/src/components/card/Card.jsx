@@ -8,7 +8,7 @@ export default function Table({name ,money ,date , type }){
                 <h2>Concepto: {name} </h2>
                 <h5>Fecha: {date}
                 <br />
-                Monto: {money} </h5>
+                Monto: ${money} </h5>
                 <button>Modificar</button>
                 <button>Eleminar</button>
             </div>

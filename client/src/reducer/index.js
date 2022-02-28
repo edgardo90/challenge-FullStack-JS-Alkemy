@@ -1,4 +1,9 @@
-import { GET_BALANCE, GET_FINALEXPENDITURE, GET_FINALINCOME, GET_OPERATIONS } from "../actions/types";
+import { 
+    GET_BALANCE,
+    GET_FINAL_EXPENDITURE,
+    GET_FINAL_INCOME, 
+    GET_OPERATIONS,
+    POST_OPERATION, } from "../actions/types";
 
 
 const initialState ={
@@ -24,16 +29,21 @@ function reducer (state=initialState, {type,payload}){
                 balance: payload,
             }
 
-        case GET_FINALINCOME:
+        case GET_FINAL_INCOME:
             return{
                 ...state,
                 finalIncome : payload,
             }
 
-        case GET_FINALEXPENDITURE:
+        case GET_FINAL_EXPENDITURE:
             return{
                 ...state,
                 finalExpenditure: payload
+            }
+
+        case POST_OPERATION:
+            return{
+                ...state
             }
 
         default: return state;

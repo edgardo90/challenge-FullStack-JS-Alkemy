@@ -8,7 +8,7 @@ import {Link} from "react-router-dom"
 import Paginado from "./Paginado";
 
 
- function Home(){
+export default function Home(){
      const dispatch = useDispatch();
      const allOperations = useSelector(state => state.operations);
      const finalBalance = useSelector(state => state.balance);
@@ -16,7 +16,7 @@ import Paginado from "./Paginado";
      const finalExpenditure = useSelector(state => state.finalExpenditure)
 
      const [currentPage , setCurrentPage] = useState(1);
-     const [operationsPerPage] = useState(9);
+     const [operationsPerPage] = useState(10);
      const indexOfLastOperations = currentPage * operationsPerPage;
      const indexOfFirstOperations = indexOfLastOperations - operationsPerPage;
      const currentOperations = allOperations.slice(indexOfFirstOperations , indexOfLastOperations);
@@ -104,4 +104,4 @@ import Paginado from "./Paginado";
      )
 }
 
-export default Home;
+// export default Home;
