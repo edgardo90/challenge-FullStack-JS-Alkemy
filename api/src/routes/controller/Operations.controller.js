@@ -87,32 +87,32 @@ const modifyOperation = async(req ,res) =>{
 
 
 
-// const getAllIncome = async(req,res) =>{
-//     try{
-//         const allOperations = await Operation.findAll();
-//         const operationsIncome =  allOperations.filter(el => el.type.toLowerCase() === "ingreso");
-//         if(operationsIncome.length > 0 ){
-//             return res.status(200).send(operationsIncome);
-//         }
-//         return res.status(404).json({error:"No hay operaciones de ingreso para mostrar"})
-//     }catch(error){
-//         res.send(error);
-//     }
-// }
+const getAllIncome = async(req,res) =>{
+    try{
+        const allOperations = await Operation.findAll();
+        const operationsIncome =  allOperations.filter(el => el.type.toLowerCase() === "ingreso");
+        if(operationsIncome.length > 0 ){
+            return res.status(200).send(operationsIncome);
+        }
+        return res.status(404).json({error:"No hay operaciones de ingreso para mostrar"})
+    }catch(error){
+        res.send(error);
+    }
+}
 
 
-// const getAllEgress = async(req,res) =>{
-//     try{
-//         const allOperations = await Operation.findAll();
-//         const OperationsEgress = allOperations.filter(el => el.type.toLowerCase() === "egreso" )
-//         if(OperationsEgress.length > 0){
-//             return res.status(200).send(OperationsEgress);
-//         }
-//         return res.status(404).json({error:"No hay operaciones de egresos de dinero" })
-//     }catch(error){
-//         res.send(error);
-//     }
-// }
+const getAllEgress = async(req,res) =>{
+    try{
+        const allOperations = await Operation.findAll();
+        const OperationsEgress = allOperations.filter(el => el.type.toLowerCase() === "egreso" )
+        if(OperationsEgress.length > 0){
+            return res.status(200).send(OperationsEgress);
+        }
+        return res.status(404).json({error:"No hay operaciones de egresos de dinero" })
+    }catch(error){
+        res.send(error);
+    }
+}
 
 
 module.exports={postOperation , getAllOpetations, getIdOperation ,deleteOperation, modifyOperation, getAllIncome , getAllEgress};
