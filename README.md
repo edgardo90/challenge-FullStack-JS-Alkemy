@@ -64,3 +64,14 @@ de Frontend
 ● Correcto diseño de la base de datos
 ● Buenas prácticas de GIT: Commits declarativos y atomizados
 ● Buenas prácticas para el nombre de rutas
+
+##  Para tener en cuenta
+
+hacer un archivo .env en api para que funcione en su estado local :
+DB_USER=
+DB_PASSWORD=
+DB_HOST=
+crear una base de datos con el nombre "presupestoApp".
+Para iniciar es npm run start-local estando en la carpeta api.
+
+Para iniciar front npm start desde la carpeta client
