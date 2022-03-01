@@ -101,7 +101,9 @@ export default function OperationCreate(){
                 <div>
                     <label >Conpeto: </label>
                     <input
+                     placeholder="ingrese..."
                      type="text"
+                     style={{width : "200px", heigth : "1px"}}
                      value={data.name}
                      name="name"
                      onChange={event => handleChange(event)}
@@ -115,6 +117,7 @@ export default function OperationCreate(){
                     <label >Fecha: </label>
                     <input
                      type="date"
+                     style={{width : "200px", heigth : "1px"}}
                      name="date"
                      value={data.date}
                      onChange={event => handleChange(event)}
@@ -129,6 +132,8 @@ export default function OperationCreate(){
                     <input
                      type="number"
                      name="money"
+                     placeholder="solamente numeros enteros..."
+                     style={{width : "200px", heigth : "1px"}}
                      value={data.money}
                      onChange={event => handleChange(event)}
                     />
