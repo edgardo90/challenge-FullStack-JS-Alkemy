@@ -21,6 +21,13 @@
     font-family: 'Cookie', cursive;
 }
 
+
+.selectAndButton:hover{ /*cambia el color cunado el mouse va ahi  */
+    background-color: rgba(147, 147, 155, 0.952);
+    color: white;
+    font-family: 'Cookie', cursive;
+}
+
 .balance{
     text-align: center;
     margin-left: 35%;
@@ -36,11 +43,6 @@
   }
 
 
-.selectAndButton:hover{ /*cambia el color cunado el mouse va ahi  */
-    background-color: rgba(147, 147, 155, 0.911);
-    color: white;
-    font-family: 'Cookie', cursive;
-}
 
 
 .button{
@@ -61,6 +63,7 @@
 
 .divCard{
     margin-left: 10%;
+    margin-right: 10%;
 }
 
 .card{

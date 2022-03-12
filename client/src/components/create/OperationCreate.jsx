@@ -5,6 +5,7 @@ import {Link , useNavigate} from "react-router-dom";
 import { postOperation} from "../../actions";
 
 import styles from "./css/OperationCreate.module.css"
+import SelectType from "./SelectType";
 
 
 function validate(input){
@@ -33,10 +34,11 @@ export default function OperationCreate(){
         name:"",
         date:"",
         money:"",
+        category:""  ,
     })
     const [errors , setErrors] = useState({})
 
-    const type = ["ingreso" , "egreso"]
+    const categories = ["Alimentacion", "Cuentas y pagos", "Casa", "Transporte", "Ropa" , " Salud e hingiene", "Diversion", "Otros gastos" ];
 
     function handleRadio(event){
         setData(({
@@ -44,9 +46,20 @@ export default function OperationCreate(){
             type: event.target.value
         }))
         console.log(data)
-    }
+    };
+
+    function handleSelect(event){
+        setData(({
+            ...data,
+            category: event.target.value === "nada" ? data.category
+            : event.target.value
+        }));
+        console.log(data)
+    };
+    
     const errorRadioType = !data.type ? 1 : 0 ;
     const errorDate = !data.date ? 1 : 0 ;
+
 
     function handleChange(event){
         setData(({
@@ -71,7 +84,8 @@ export default function OperationCreate(){
             type: "",
             name: "",
             date: "",
-            money:"", 
+            money:"",
+            category:"", 
         })
         navigate("/")
     }
@@ -82,25 +96,26 @@ export default function OperationCreate(){
             <h1 className={styles.titulo} >Agrega una nueva Operacion</h1>
             <form  onSubmit={event => handleSubmit(event)}  className={styles.formulario} >
                 <div>
-                    <label >Tipo :  /</label>
-                    {type.map( el =>{
-                        return(
-                            <label key={el}> {el} 
-                                <input
-                                 type="radio"
-                                 id={el}
-                                 name="type"
-                                 value={el}
-                                 onChange={event => handleRadio(event)}
-                                />/
-                            </label>
-                        )
-                    })}
+                    <SelectType handleRadio={handleRadio} />
                     {!data.type &&
                     <p style={{color:"red" ,fontWeight:700 , fontSize:14 }}> Seleciona si el tipo es ingreso o egreso </p>
                      }
                 </div>
                 <br />
+                {data.type === "egreso" &&
+                 <div>
+                    <label >Categorias : </label>
+                    <select onChange={event => handleSelect(event)} >
+                        <option value="nada">Selecciona una categoria</option>
+                        {categories.map(el=>{
+                            return(
+                                <option value={el.toLocaleLowerCase()} key={el}>{el}</option>
+                            )
+                        })}
+                    </select>
+                 </div>
+                 }
+                 <br />
                 <div>
                     <label >Conpeto: </label>
                     <input
