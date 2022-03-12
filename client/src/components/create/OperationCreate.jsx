@@ -12,6 +12,9 @@ function validate(input){
     if(!input.name){
         errors.name = "Tienes que ingresar un concepto"
     }
+    if(input.name.length > 19){
+        errors.name = "Tiene que ser menor de 20 caracteres"
+    }
     if(!input.money){
         errors.money = "Tienes que ingresar el monto"
     }else if(input.money < 1 || (input.money % 1) !== 0  ){

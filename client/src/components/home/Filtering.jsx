@@ -7,19 +7,23 @@ import styles from "./css/Filtrado.module.css"
 export default function Filtering(){
     const dispatch = useDispatch();
 
+    const types = ["Todos", "Ingresos" , "Egresos"]
+
     function handleFilter(event){
         dispatch(filterType(event.target.value))
     }
 
-    // const types = ["ingreso" , "egreso"]
-
     return(
         <div>
+            <label  >Filtrar por Tipo : 
             <select onChange={handleFilter} className={styles.select}>
-                <option value="All">Filtrado por tipo /ingresos y egresos</option>
-                <option value="ingreso" >Ingresos</option>
-                <option value="egreso">Egresos</option>
+                {types.map(el => {
+                    return(
+                        <option value={el.toLocaleLowerCase()} key={el} >{el} </option>
+                    )
+                })}
             </select>
+            </label>
         </div>
     )
 }

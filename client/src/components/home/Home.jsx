@@ -8,6 +8,9 @@ import {Link} from "react-router-dom"
 import Paginado from "./Paginado";
 import Filtering from "./Filtering";
 
+
+// import logo from "./css/logo512.png"
+import loading from "./css/cargando.gif"
 import styles from "./css/Home.module.css"
 
 
@@ -61,6 +64,33 @@ export default function Home(){
     }
 
 
+    const [time , setTime] = useState("cargando...")
+    useEffect(()=>{ // cuando pase x tiempo el setTime se va a setear a un strig vacio para dejar de mostar el "time"
+        setTimeout(()=>{
+            setTime("") 
+        },20000)
+    },[])
+    console.log(time)
+
+    if(time){ // un time para simular que la pagina esta cargando
+        return(
+            <div>
+                <div className={styles.selectAndButton}>
+                 <button  className={styles.button}  onClick={event => handleClick(event)}>Recargar la app</button>
+                 <Filtering/>
+                 <Link to="/createOperation"  ><button  className={styles.button} >Crear operacion</button> </Link>
+                </div>
+                <br />
+                <h1 className={styles.h1} >Presopuesto App</h1>
+                <div className={styles.notCountryes} >
+                    {/* <img src={logo} alt="cargando ..." /> */}
+                     <img className= {styles.imag} src={loading} alt="Loading" /> 
+                    <h1>{time} </h1> 
+                </div>
+            </div>
+        )
+    }
+
      return(
          <div>
              <div className={styles.selectAndButton}>
@@ -78,7 +108,7 @@ export default function Home(){
                  />
              </div>
              <br />
-             <div>
+             <div className={styles.divCard} >
                  { currentOperations.length > 0 ? currentOperations.map(el =>{
                      return(
                          <div key={el.id} className={el.type === "egreso" ? styles.cardEgreso : styles.card} >
@@ -95,7 +125,7 @@ export default function Home(){
                              />
                          </div>
                      )
-                 }) : <h1>No hay operaciones</h1>
+                 }) : <h1 className={styles.notCountryes}>No hay operaciones</h1>
                    }
              </div>
              <div className={styles.paginado}>

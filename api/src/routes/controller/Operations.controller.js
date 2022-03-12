@@ -117,12 +117,12 @@ const getAllEgress = async(req,res) =>{
 const getFilterType = async(req,res ) =>{
     try{
         const{type} = req.params;
-        if(type === "egreso"){
+        if(type === "egresos"){
             const allOperations = await Operation.findAll();
             const OperationsEgress = allOperations.filter(el => el.type.toLowerCase() === "egreso" );
             return res.status(200).send(OperationsEgress);
         }
-        if(type === "ingreso"){
+        if(type === "ingresos"){
             const allOperations = await Operation.findAll();
             const operationsIncome =  allOperations.filter(el => el.type.toLowerCase() === "ingreso");
             return res.status(200).send(operationsIncome)

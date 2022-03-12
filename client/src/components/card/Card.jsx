@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {useEffect } from "react"
 import { useDispatch } from "react-redux";
 import { deleteOperation , } from "../../actions";
 
@@ -31,7 +30,11 @@ export default function Table({name ,money ,date , type , id , getBalance, getOp
         <div>
             <div>
                 <h4 className={styles.leter}>Tipo: {type}</h4>
-                <h2 className={styles.name} > {name.length <12 ? `Concepto: ${name}` : name } </h2>
+                {name.length < 10 ?
+                 <h2 className={styles.name} >{`Concepto: ${name}`} </h2> :
+                 <h2 className={styles.nameLong} >{`Concepto: ${name}`}</h2> 
+                 }
+                {/* <h2 className={styles.name} > {name.length <12 ? `Concepto: ${name}` : name } </h2> */}
                 <h5 className={styles.leter}>Fecha: {date}
                 <br />
                 Monto: ${money} </h5>

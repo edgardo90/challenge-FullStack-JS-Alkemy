@@ -1,8 +1,11 @@
 .select{ /* modifico los select  */
     color: black;
-    border-radius: 7px;
-    border: none;
+    border-radius: 10px;
+    /* border: none; */
+    /* border:ridge  ; */
+    border-color: black;
     font-family: 'Cookie', cursive;
+    margin-left: 5px;
 }
 .select:hover{ /*cambia cuando toco los select  */
     background-color: rgba(40, 63, 65, 0.459);

@@ -1,23 +1,24 @@
 .h1{
     text-align: center; /*lo mueve al centro  */
-    margin-top: 8%;
+    margin-top: 3%;
     color: rgb(101, 112, 235);
     font-size: 50px;
     font-family: 'Cookie', cursive;
   }
 
   .selectAndButton{  /* aca lo que haga es lo que esta en ese div lo mueve hacia arriba y lo deja fijo */
-    height: 80px;
+    height: 50px;
     width: 100%;
     top: 0;
     left: 0;
-    background-color: rgba(160, 208, 212, 0.342);
+    background-color: rgba(183, 218, 221, 0.342);
     display: flex;
-    position: fixed;
+    position: fixed; /* lo dejo fijo */
     justify-content:space-between;
     align-items: center;
     box-sizing: border-box;
-    z-index: auto
+    z-index: auto;
+    font-family: 'Cookie', cursive;
 }
 
 .balance{
@@ -36,7 +37,9 @@
 
 
 .selectAndButton:hover{ /*cambia el color cunado el mouse va ahi  */
-    background-color: rgba(27, 29, 122, 0.336);
+    background-color: rgba(147, 147, 155, 0.911);
+    color: white;
+    font-family: 'Cookie', cursive;
 }
 
 
@@ -47,7 +50,8 @@
 }
 .button:hover{   /*cambia el botton cuando el mouse pasa por ahi  */
     background-color: rgba(160, 208, 212, 0.459);
-    color: rgb(15, 14, 14);
+    /* color: rgb(15, 14, 14); */
+    color: white;
     padding-left: 15px;/* agrando el button hacia la izquierda  */
     padding-right: 15px; /* agrando el button hacia la derecha */
     padding-top: 5px; /*agrando el button hacia arriba  */
@@ -55,17 +59,22 @@
     border-radius: 15px;
 }
 
+.divCard{
+    margin-left: 10%;
+}
 
 .card{
     border: 1px solid rgb(184, 238, 153); 
     border-radius: 15px;
     box-sizing: border-box;
     display: inline-block; /*lo deja en fila tipo en bloke, en este caso fila de 3  */
-    margin: 2%;
-    padding: 1em;
+    margin: 3%;
+    /* padding: 1em; */
+    padding: 30px;
     vertical-align: top;
     width: 33,5%; /* hace que la fila este ordenada  */
     /* background-color: white; */
+    box-shadow: 2px 2px 2px 2px rgba(92, 112, 92, 0.753);
 }
 .card:hover{ /*cambia cuando se toca el pais  */
     border: 1px solid #999; 
@@ -80,11 +89,13 @@
     border-radius: 15px;
     box-sizing: border-box;
     display: inline-block; /*lo deja en fila tipo en bloke, en este caso fila de 3  */
-    margin: 2%;
-    padding: 1em;
+    margin: 3%;
+    /* padding: 1em; */
+    padding: 30px;
     vertical-align: top;
     width: 33,5%; /* hace que la fila este ordenada  */
     /* background-color: white; */
+    box-shadow: 2px 2px 2px 2px rgba(112, 92, 92, 0.753);
 }
 .cardEgreso:hover{ /*cambia cuando se toca el pais  */
     border: 1px solid #999; 
@@ -107,14 +118,23 @@
     border: none;
     border-radius: 7px;
     font-family: 'Cookie', cursive;
+    background-color: rgb(43, 109, 207);
 }
 
 .paginadoButton:hover{
-    background-color: rgba(160, 208, 212, 0.459);
+    background-color: rgba(90, 177, 185, 0.459);
     color: white;
     padding-left: 5px;/* agrando el button hacia la izquierda  */
     padding-right: 5px; /* agrando el button hacia la derecha */
     padding-top: 5px; /*agrando el button hacia arriba  */
     padding-bottom: 5px; /* agrando el button hacia abajo */
     border-radius: 15px;
+}
+
+.notCountryes{
+    text-align: center;
+}
+
+.imag{
+    border-radius: 9999px;
 }

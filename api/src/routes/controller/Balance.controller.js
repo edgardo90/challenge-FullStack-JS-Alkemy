@@ -8,7 +8,7 @@ const incomeTotal = async(req,res) =>{
            const arrayIncomes = operationsIncome.map(el => { return el.money}) ;
            let total = arrayIncomes.reduce(function(acumulador , element ){
                return acumulador + element;
-           },0).toString() // lo convierto a string para que lo pueda ver en
+           },0).toString() // lo convierto a string para que lo pueda ver en postman
         //    total = [total]
         //    console.log(total)
         //    total = total.join("");
@@ -30,7 +30,7 @@ const expenditureTotal = async(req,res) =>{
            const arrayExpenditures = operationsExpenditure.map(el => { return el.money}) ;
            let total = arrayExpenditures.reduce(function(acumulador , element ){
                return acumulador + element;
-           },0).toString() // lo convierto a string para que lo pueda ver en
+           },0).toString() // lo convierto a string para que lo pueda ver en postman
            return res.status(200).send("-" + total)
         }
         return res.status(200).send("0")
@@ -53,7 +53,7 @@ const incomeAmount = async() =>{
     return 0
 }
 
-const ExpenditureAmount = async() =>{
+const expensesAmount = async() =>{
     const allOperations = await Operation.findAll();
     const operationsExpenditure = await  allOperations.filter(el => el.type.toLowerCase() === "egreso");
     if(operationsExpenditure.length > 0 ){
@@ -70,8 +70,8 @@ const ExpenditureAmount = async() =>{
 const currentBalance = async(req , res) =>{
     try{
         const income = await incomeAmount();
-        const expenditures = await ExpenditureAmount();
-        let balance = income - expenditures;
+        const expenses = await expensesAmount();
+        let balance = income - expenses;
         balance = balance.toString()
         return res.status(200).send(balance)
     }catch(error){
