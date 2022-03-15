@@ -26,7 +26,7 @@ export default function Home(){
      const indexOfLastOperations = currentPage * operationsPerPage;
      const indexOfFirstOperations = indexOfLastOperations - operationsPerPage;
      const currentOperations = allOperations.slice(indexOfFirstOperations , indexOfLastOperations);
-     console.log(currentOperations)
+    //  console.log(currentOperations)
      
      const paginado = (pageNumber) =>{
          setCurrentPage(pageNumber);
@@ -70,7 +70,7 @@ export default function Home(){
             setTime("") 
         },15000)
     },[])
-    console.log(time)
+    // console.log(time)
 
     if(time){ // un time para simular que la pagina esta cargando
         return(
