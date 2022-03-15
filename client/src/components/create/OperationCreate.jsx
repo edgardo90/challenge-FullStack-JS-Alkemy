@@ -5,6 +5,7 @@ import {Link , useNavigate} from "react-router-dom";
 import { postOperation} from "../../actions";
 
 import styles from "./css/OperationCreate.module.css"
+import SelectCategories from "./SelectCategories";
 import SelectType from "./SelectType";
 
 
@@ -20,6 +21,9 @@ function validate(input){
         errors.money = "Tienes que ingresar el monto"
     }else if(input.money < 1 || (input.money % 1) !== 0  ){
         errors.money= "El monto tiene que ser mayor a 0 y un numero entero"
+    }
+    if(input.type==="egreso" && !input.category){
+        errors.category = "ingresa una cateroria "
     }
     return errors
 }
@@ -37,8 +41,6 @@ export default function OperationCreate(){
         category:""  ,
     })
     const [errors , setErrors] = useState({})
-
-    const categories = ["Alimentacion", "Cuentas y pagos", "Casa", "Transporte", "Ropa" , " Salud e hingiene", "Diversion", "Otros gastos" ];
 
     function handleRadio(event){
         setData(({
@@ -73,6 +75,10 @@ export default function OperationCreate(){
         }))
     }
 
+    if(data.type === "ingreso"){ // si el data.type es igual a "ingreso" seteo el data.category a un string vacio 
+        data.category ="";
+    }
+
     function handleSubmit(event){
         event.preventDefault();
         if(Object.values(errors).length > 0 || errorRadioType > 0 || errorDate > 0 ){
@@ -90,6 +96,8 @@ export default function OperationCreate(){
         navigate("/")
     }
 
+
+
     return(
         <div>
             <Link to="/" ><button className={styles.botonHome} >Volver al inicio</button> </Link>
@@ -102,20 +110,13 @@ export default function OperationCreate(){
                      }
                 </div>
                 <br />
-                {data.type === "egreso" &&
-                 <div>
-                    <label >Categorias : </label>
-                    <select onChange={event => handleSelect(event)} >
-                        <option value="nada">Selecciona una categoria</option>
-                        {categories.map(el=>{
-                            return(
-                                <option value={el.toLocaleLowerCase()} key={el}>{el}</option>
-                            )
-                        })}
-                    </select>
-                 </div>
-                 }
-                 <br />
+                <div>
+                    {data.type === "egreso" &&
+                    <SelectCategories handleSelect={handleSelect} />}
+                    {!data.category && 
+                    <p style={{color:"red" ,fontWeight:700 , fontSize:14 }}>{errors.category} </p>}
+                    {data.type === "egreso" && <br/>}
+                </div>
                 <div>
                     <label >Conpeto: </label>
                     <input

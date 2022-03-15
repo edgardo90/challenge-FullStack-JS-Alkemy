@@ -68,7 +68,7 @@ export default function Home(){
     useEffect(()=>{ // cuando pase x tiempo el setTime se va a setear a un strig vacio para dejar de mostar el "time"
         setTimeout(()=>{
             setTime("") 
-        },20000)
+        },15000)
     },[])
     console.log(time)
 
