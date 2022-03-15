@@ -6,6 +6,7 @@ const postOperation = async(req,res)=>{
         money,
         date,
         type,
+        category,
     }= req.body;
     try{
         const operationCreate = await Operation.create({
@@ -13,6 +14,7 @@ const postOperation = async(req,res)=>{
             money,
             date,
             type,
+            category,
         });
         return res.status(200).send(operationCreate) 
     }catch(error){
@@ -87,7 +89,7 @@ const modifyOperation = async(req ,res) =>{
 
 
 
-const getAllIncome = async(req,res) =>{
+const getAllIncome = async(req,res) =>{ // ruta para prueba interna
     try{
         const allOperations = await Operation.findAll();
         const operationsIncome =  allOperations.filter(el => el.type.toLowerCase() === "ingreso");
@@ -101,7 +103,7 @@ const getAllIncome = async(req,res) =>{
 }
 
 
-const getAllEgress = async(req,res) =>{
+const getAllEgress = async(req,res) =>{ // ruta para prueba interna
     try{
         const allOperations = await Operation.findAll();
         const OperationsEgress = allOperations.filter(el => el.type.toLowerCase() === "egreso" )
@@ -134,5 +136,28 @@ const getFilterType = async(req,res ) =>{
     }
 }
 
+const getFilterCategory = async(req, res) => {
+    try{
+        const{category} = req.params;
+        const allOperations = await Operation.findAll({ // traigo solamente lo que tiene type:"egreso" 
+            where: {type: "egreso"}
+        });
+        const operationsFilter =  allOperations.filter(el => el.category.toLowerCase() === category.toLowerCase()  );
+        return res.status(200).send(operationsFilter);
+    }catch(error){
+        res.send(error);
+    }
+}
 
-module.exports={postOperation , getAllOpetations, getIdOperation ,deleteOperation, modifyOperation, getAllIncome , getAllEgress , getFilterType};
+
+module.exports={
+    postOperation ,
+    getAllOpetations,
+    getIdOperation ,
+    deleteOperation,
+    modifyOperation, 
+    getAllIncome , 
+    getAllEgress , 
+    getFilterType,
+    getFilterCategory,
+};

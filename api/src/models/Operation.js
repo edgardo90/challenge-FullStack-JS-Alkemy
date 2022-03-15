@@ -27,5 +27,9 @@ module.exports = (sequelize) => {
       values:["ingreso" , "egreso"],
       allowNull: true
     },
+    category:{
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   });
 };

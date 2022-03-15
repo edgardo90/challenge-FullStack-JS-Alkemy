@@ -8,7 +8,9 @@ const {postOperation,
     modifyOperation,
     getAllIncome , 
     getAllEgress,
-    getFilterType} = require("./controller/Operations.controller");
+    getFilterType,
+    getFilterCategory,
+} = require("./controller/Operations.controller");
 
 const {incomeTotal , expenditureTotal , currentBalance} = require("./controller/Balance.controller");
 
@@ -21,7 +23,9 @@ router.delete("/operations/:idOperation", deleteOperation);
 router.put("/operations/:idOperation", modifyOperation);
 router.get("/operationsIncome", getAllIncome); // ruta para prueba interna
 router.get("/opertionsExpenditures" , getAllEgress);// ruta para prueba interna
-router.get("/filterOperations/:type",getFilterType)
+router.get("/filterOperations/:type",getFilterType);
+router.get("/filterCategory/:category",getFilterCategory);
+
 
 router.get("/ingresos" , incomeTotal);
 router.get("/egresos" , expenditureTotal);
