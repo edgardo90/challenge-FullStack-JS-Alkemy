@@ -18,7 +18,7 @@ export default function Filtering(){
         "Casa",
         "Transporte",
         "Ropa" ,
-        " Salud e hingiene",
+        "Salud e hingiene",
         "Diversion",
         "Otros gastos" ];
 

@@ -7,7 +7,7 @@ export default function SelectCategories({handleSelect}){
         "Casa",
         "Transporte",
         "Ropa" ,
-        " Salud e hingiene",
+        "Salud e hingiene",
         "Diversion",
         "Otros gastos" ];
     
