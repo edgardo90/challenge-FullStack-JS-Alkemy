@@ -142,7 +142,7 @@ const getFilterCategory = async(req, res) => {
         const allOperations = await Operation.findAll({ // traigo solamente lo que tiene type:"egreso" 
             where: {type: "egreso"}
         });
-        if(category === "todos"){
+        if(category === "all"){
             return res.status(200).send(allOperations);
         }
         const operationsFilter =  allOperations.filter(el => el.category.toLowerCase() === category.toLowerCase()  );
