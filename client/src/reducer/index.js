@@ -5,7 +5,9 @@ import {
     GET_OPERATIONS,
     POST_OPERATION,
     DELETE_OPERATION,
-    FILTER_TYPE } from "../actions/types";
+    FILTER_TYPE,
+    FILTER_CATEGORY, 
+} from "../actions/types";
 
 
 const initialState ={
@@ -60,6 +62,12 @@ function reducer (state=initialState, {type,payload}){
         // const allOperations = state.copyOperations; 
         // const statusFilter = payload === "All" ? allOperations :
         // allOperations.filter(el => el.type.toLowerCase()  === payload );
+        return{
+            ...state,
+            operations: payload,
+        }
+
+    case FILTER_CATEGORY:
         return{
             ...state,
             operations: payload,

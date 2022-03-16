@@ -6,6 +6,7 @@ import {
     POST_OPERATION,
     DELETE_OPERATION,
     FILTER_TYPE,
+    FILTER_CATEGORY,
 } from "./types";
 import axios from "axios";
 
@@ -100,3 +101,12 @@ export function filterType(type){
     }
 }
 
+export function filterCategory(category){
+    return async function(dispatch){
+        const json = await axios.get(`http://localhost:3001/filterCategory/${category}`);
+        return dispatch({
+            type: FILTER_CATEGORY,
+            payload: json.data,
+        })
+    }
+}
