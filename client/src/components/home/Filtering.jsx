@@ -39,7 +39,7 @@ export default function Filtering(){
     
     return(
         <div>
-            <label  >Filtrar por Tipo : 
+            <label  >Filtrar por Tipo: </label>
             <select onChange={event=> handleFilterType(event)}  className={styles.select}>
                 {types.map(el => {
                     return(
@@ -47,7 +47,6 @@ export default function Filtering(){
                     )
                 })}
             </select>
-            </label>
             {data.type === "egresos" &&
             <select className={styles.select} onChange={event => handleFilterCategory(event)} >
                 <option value="all">Filtrar por categorias/ todos</option>

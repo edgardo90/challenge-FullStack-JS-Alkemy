@@ -49,6 +49,7 @@
     /* border: none; */
     border-radius: 10px;
     font-family: 'Cookie', cursive;
+    cursor: pointer;
 }
 .button:hover{   /*cambia el botton cuando el mouse pasa por ahi  */
     background-color: rgba(118, 219, 226, 0.664);
@@ -62,8 +63,8 @@
 }
 
 .divCard{
-    margin-left: 16%;
-    margin-right: 14%;
+    margin-left: 14%;
+    margin-right: 10%;
 }
 
 .card{
@@ -122,6 +123,7 @@
     border-radius: 7px;
     font-family: 'Cookie', cursive;
     background-color: rgb(43, 109, 207);
+    cursor: pointer;
 }
 
 .paginadoButton:hover{
@@ -140,4 +142,5 @@
 
 .imag{
     border-radius: 9999px;
+    cursor: progress;
 }

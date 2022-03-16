@@ -18,7 +18,7 @@ function validate(input){
         errors.name = "Tiene que ser menor de 20 caracteres"
     }
     if(!input.money){
-        errors.money = "Tienes que ingresar el monto"
+        errors.money = "Tienes que ingresar el monto y solamente numeros"
     }else if(input.money < 1 || (input.money % 1) !== 0  ){
         errors.money= "El monto tiene que ser mayor a 0 y un numero entero"
     }
@@ -56,9 +56,8 @@ export default function OperationCreate(){
         console.log(data)
     };
     
-    const errorRadioType = !data.type ? 1 : 0 ;
-    const errorDate = !data.date ? 1 : 0 ;
-
+    const errorTypeAndDate = !data.type || !data.date ? 1 : 0 ;
+    const errroCategory = data.type === "egreso" && !data.category ? 1 : 0 ;
 
     function handleChange(event){
         setData(({
@@ -78,7 +77,7 @@ export default function OperationCreate(){
 
     function handleSubmit(event){
         event.preventDefault();
-        if(Object.values(errors).length > 0 || errorRadioType > 0 || errorDate > 0 ){
+        if(Object.values(errors).length > 0 || errorTypeAndDate > 0 || errroCategory >0 ){
             return alert("Observa los errores que estan en color rojo!")
         }
         dispatch(postOperation(data) );
@@ -110,8 +109,8 @@ export default function OperationCreate(){
                 <div>
                     {data.type === "egreso" &&
                     <SelectCategories handleSelect={handleSelect} />}
-                    {!data.category && 
-                    <p style={{color:"red" ,fontWeight:700 , fontSize:14 }}>{errors.category} </p>}
+                    {!data.category && data.type === "egreso" &&
+                    <p style={{color:"red" ,fontWeight:700 , fontSize:14 }}>selecciona una categoria</p>}
                     {data.type === "egreso" && <br/>}
                 </div>
                 <div>

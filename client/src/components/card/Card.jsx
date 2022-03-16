@@ -29,16 +29,17 @@ export default function Table({name ,money ,date , type , id , category , getBal
     return(
         <div>
             <div>
-                <h4 className={styles.leter}>Tipo: {type}
+                <h4 className={!category ? styles.leter : styles.leterAndCategory}>Tipo: {type}
                 {type === "egreso" && <br/>
                  }{category && `Categoria: ${category}` }
                 </h4>
+
                 {name.length < 10 ?
                  <h2 className={styles.name} >{`Concepto: ${name}`}
                  </h2> :
                  <h2 className={styles.nameLong} >{`Concepto: ${name}`}</h2> 
                  }
-                {/* <h2 className={styles.name} > {name.length <12 ? `Concepto: ${name}` : name } </h2> */}
+
                 <h5 className={styles.leter}>Fecha: {date}
                 <br />
                 Monto: ${money}

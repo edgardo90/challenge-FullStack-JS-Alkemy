@@ -6,6 +6,7 @@
     border-color: black;
     font-family: 'Cookie', cursive;
     margin-left: 5px;
+    cursor: pointer;
 }
 .select:hover{ /*cambia cuando toco los select  */
     background-color: rgba(118, 219, 226, 0.664);

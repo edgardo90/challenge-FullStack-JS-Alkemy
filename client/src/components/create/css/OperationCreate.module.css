@@ -8,7 +8,8 @@
     padding-right: 10px; /* agrando el button hacia la derecha */
     padding-top: 5px; /*agrando el button hacia arriba  */
     padding-bottom: 5px; /* agrando el button hacia abajo */
-    background-color: rgba(41, 74, 219, 0.842)
+    background-color: rgba(41, 74, 219, 0.842);
+    cursor: pointer;
 }
 .botonHome:hover{
     background-color: rgba(160, 208, 212, 0.842);
@@ -71,7 +72,8 @@
     border-radius: 15px;
     margin-left: 90px ;
     font-family: 'Cookie', cursive;
-    background-color: rgba(41, 74, 219, 0.842)
+    background-color: rgba(41, 74, 219, 0.842);
+    cursor: pointer;
   }
 
   
