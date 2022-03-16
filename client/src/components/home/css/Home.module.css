@@ -54,16 +54,16 @@
     background-color: rgba(118, 219, 226, 0.664);
     /* color: rgb(15, 14, 14); */
     color: white;
-    padding-left: 15px;/* agrando el button hacia la izquierda  */
-    padding-right: 15px; /* agrando el button hacia la derecha */
-    padding-top: 5px; /*agrando el button hacia arriba  */
-    padding-bottom: 5px; /* agrando el button hacia abajo */
+    padding-left: 7px;/* agrando el button hacia la izquierda  */
+    padding-right: 7px; /* agrando el button hacia la derecha */
+    padding-top: 3px; /*agrando el button hacia arriba  */
+    padding-bottom: 3px; /* agrando el button hacia abajo */
     border-radius: 15px;
 }
 
 .divCard{
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 17%;
+    margin-right: 15%;
 }
 
 .card{
