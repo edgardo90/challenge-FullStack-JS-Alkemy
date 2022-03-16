@@ -5,7 +5,7 @@ import { deleteOperation , } from "../../actions";
 
 import styles from "./css/Card.module.css"
 
-export default function Table({name ,money ,date , type , id , getBalance, getOperations  , getFinalIncome , getFinalExpenditure  }){
+export default function Table({name ,money ,date , type , id , category , getBalance, getOperations  , getFinalIncome , getFinalExpenditure  }){
     const dispatch = useDispatch();
     
     function handleDelete(event){
@@ -29,15 +29,20 @@ export default function Table({name ,money ,date , type , id , getBalance, getOp
     return(
         <div>
             <div>
-                <h4 className={styles.leter}>Tipo: {type}</h4>
+                <h4 className={styles.leter}>Tipo: {type}
+                {type === "egreso" && <br/>
+                 }{category && `Categoria: ${category}` }
+                </h4>
                 {name.length < 10 ?
-                 <h2 className={styles.name} >{`Concepto: ${name}`} </h2> :
+                 <h2 className={styles.name} >{`Concepto: ${name}`}
+                 </h2> :
                  <h2 className={styles.nameLong} >{`Concepto: ${name}`}</h2> 
                  }
                 {/* <h2 className={styles.name} > {name.length <12 ? `Concepto: ${name}` : name } </h2> */}
                 <h5 className={styles.leter}>Fecha: {date}
                 <br />
-                Monto: ${money} </h5>
+                Monto: ${money}
+                </h5>
                 <Link to={`/modifyOperation/${id}`} ><button className={styles.buttonModify} >Modificar</button></Link>
                 <button onClick={event => handleDelete(event)} className={styles.button}   >Eleminar</button>
             </div>

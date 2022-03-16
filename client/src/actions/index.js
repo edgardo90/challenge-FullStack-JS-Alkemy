@@ -82,7 +82,8 @@ export function modifyOperation(idOperation , newData){
             await axios.put(`http://localhost:3001/operations/${idOperation}`,{
                 name: newData.name,
                 money: newData.money,
-                date: newData.date
+                date: newData.date,
+                category: newData.category,
             });
 
         }catch(error){

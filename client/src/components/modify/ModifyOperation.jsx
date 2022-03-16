@@ -89,7 +89,7 @@ export default function ModifyOperation(){
                 <form  onSubmit={event => handleSubmit(event)}  className={styles.formulario} >
                     <div>
                         {idOperation.type === "egreso" &&
-                        <SelectCategories handleSelect={event => handleSelect(event)}/>}
+                        <SelectCategories handleSelect={handleSelect}/>}
                         {!data.category && idOperation.type === "egreso" && 
                         <p style={{color:"black" ,fontWeight:700 , fontSize:14 }}>categoria actual: {idOperation.category} </p>}
                         {idOperation.type === "egreso" && <br/>}

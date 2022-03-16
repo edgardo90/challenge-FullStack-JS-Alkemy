@@ -117,6 +117,7 @@ export default function Home(){
                              type = {el.type}
                              date = {el.date}
                              money = {el.money}
+                             category={el.category}
                              id = {el.id}
                              getBalance={getBalance}
                              getOperations={getOperations}
