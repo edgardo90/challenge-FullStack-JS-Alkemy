@@ -71,6 +71,7 @@ const modifyOperation = async(req ,res) =>{
             name,
             money,
             date,
+            category,
         } = req.body
         const allOperations = await Operation.findAll();
         const operation = allOperations.find(el => el.id.toLowerCase() === idOperation.toLowerCase() );
@@ -78,6 +79,7 @@ const modifyOperation = async(req ,res) =>{
             operation.name = name ? name : operation.name;
             operation.money = money ? money : operation.money;
             operation.date = date ? date : operation.date;
+            operation.category = category ? category : operation.category;
             operation.save();
             return res.status(200).send(operation)
         }
