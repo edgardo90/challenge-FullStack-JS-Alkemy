@@ -24,7 +24,7 @@
     font-family: 'Cookie', cursive;
 }
 .button:hover{   /*cambia el botton cuando el mouse pasa por ahi  */
-    background-color: rgba(241, 92, 81, 0.459);
+    background-color: rgba(241, 92, 81, 0.925);
     color: rgb(15, 14, 14);
     padding-left: 10px;/* agrando el button hacia la izquierda  */
     padding-right: 10px; /* agrando el button hacia la derecha */
@@ -39,7 +39,7 @@
     font-family: 'Cookie', cursive;
 }
 .buttonModify:hover{
-    background-color: rgba(61, 223, 223, 0.459);
+    background-color: rgba(61, 223, 223, 0.87);
     color: rgb(15, 14, 14);
     padding-left: 10px;/* agrando el button hacia la izquierda  */
     padding-right: 10px; /* agrando el button hacia la derecha */
