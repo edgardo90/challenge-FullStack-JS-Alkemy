@@ -6,7 +6,8 @@ import {
     POST_OPERATION,
     DELETE_OPERATION,
     FILTER_TYPE,
-    FILTER_CATEGORY, 
+    FILTER_CATEGORY,
+    GET_ID_OPERATION, 
 } from "../actions/types";
 
 
@@ -16,6 +17,7 @@ const initialState ={
     balance:[],
     finalIncome:[],
     finalExpenditure:[],
+    operationId:[],
 }
 
 
@@ -71,6 +73,12 @@ function reducer (state=initialState, {type,payload}){
         return{
             ...state,
             operations: payload,
+        }
+
+    case GET_ID_OPERATION:
+        return{
+            ...state,
+            operationId: payload,
         }
 
         default: return state;

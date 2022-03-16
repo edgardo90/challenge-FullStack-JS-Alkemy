@@ -7,6 +7,7 @@ import {
     DELETE_OPERATION,
     FILTER_TYPE,
     FILTER_CATEGORY,
+    GET_ID_OPERATION,
 } from "./types";
 import axios from "axios";
 
@@ -108,5 +109,20 @@ export function filterCategory(category){
             type: FILTER_CATEGORY,
             payload: json.data,
         })
+    }
+}
+
+export function getIdOperation(id){
+    return async function(dispatch){
+        try{
+            const json = await axios.get(`http://localhost:3001/operations/${id}`);
+            return dispatch({
+                type: GET_ID_OPERATION,
+                payload: json.data,
+            })
+        }catch(error){
+            alert("upss hay un error") 
+            console.log(error)
+        }
     }
 }
