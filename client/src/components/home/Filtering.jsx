@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { filterType } from "../../actions";
+import { filterType , filterCategory } from "../../actions";
 
 import styles from "./css/Filtrado.module.css"
 
@@ -22,7 +22,7 @@ export default function Filtering(){
         "Diversion",
         "Otros gastos" ];
 
-    function handleFilter(event){
+    function handleFilterType(event){
         setData(({
             ...data,
             type: event.target.value
@@ -30,11 +30,17 @@ export default function Filtering(){
         dispatch(filterType(event.target.value))
         // console.log(data.type)
     }
+
+    function handleFilterCategory(event){
+        dispatch(filterCategory(event.target.value));
+    }
+
+
     
     return(
         <div>
             <label  >Filtrar por Tipo : 
-            <select onChange={event=> handleFilter(event)}  className={styles.select}>
+            <select onChange={event=> handleFilterType(event)}  className={styles.select}>
                 {types.map(el => {
                     return(
                         <option value={el.toLocaleLowerCase()} key={el} >{el} </option>
@@ -43,8 +49,8 @@ export default function Filtering(){
             </select>
             </label>
             {data.type === "egresos" &&
-            <select className={styles.select}>
-                <option value="">Filtrar por categorias/ todos</option>
+            <select className={styles.select} onChange={event => handleFilterCategory(event)} >
+                <option value="all">Filtrar por categorias/ todos</option>
                 {categories.map(el => {
                     return(
                         <option value={el.toLocaleLowerCase()} key={el} >{el}</option>
