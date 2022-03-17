@@ -2,7 +2,10 @@ const {Operation} = require("../../db.js");
 
 const incomeTotal = async(req,res) =>{
     try{
-        const allOperations = await Operation.findAll();
+        const{user} = req.params;
+        const allOperations = await Operation.findAll({
+            where: {idUser: user}
+        });
         const operationsIncome =  allOperations.filter(el => el.type.toLowerCase() === "ingreso");
         if(operationsIncome.length > 0 ){
            const arrayIncomes = operationsIncome.map(el => { return el.money}) ;
@@ -24,7 +27,10 @@ const incomeTotal = async(req,res) =>{
 
 const expenditureTotal = async(req,res) =>{
     try{
-        const allOperations = await Operation.findAll();
+        const{user} = req.params;
+        const allOperations = await Operation.findAll({
+            where: {idUser: user}
+        });
         const operationsExpenditure =  allOperations.filter(el => el.type.toLowerCase() === "egreso");
         if(operationsExpenditure.length > 0 ){
            const arrayExpenditures = operationsExpenditure.map(el => { return el.money}) ;
@@ -40,8 +46,10 @@ const expenditureTotal = async(req,res) =>{
 }
 
 
-const incomeAmount = async() =>{
-    const allOperations = await Operation.findAll();
+const incomeAmount = async(user) =>{  
+    const allOperations = await Operation.findAll({ // el user va ser un id que viene por paramas en la funcion currentBalance
+        where: {idUser: user}
+    });
     const operationsExpenditure = await  allOperations.filter(el => el.type.toLowerCase() === "ingreso");
     if(operationsExpenditure.length > 0 ){
        const arrayExpenditures = operationsExpenditure.map(el => { return el.money}) ;
@@ -53,8 +61,10 @@ const incomeAmount = async() =>{
     return 0
 }
 
-const expensesAmount = async() =>{
-    const allOperations = await Operation.findAll();
+const expensesAmount = async(user) =>{ // el user va ser un id que viene por paramas en la funcion currentBalance
+    const allOperations = await Operation.findAll({
+        where:{idUser: user}
+    });
     const operationsExpenditure = await  allOperations.filter(el => el.type.toLowerCase() === "egreso");
     if(operationsExpenditure.length > 0 ){
        const arrayExpenditures = operationsExpenditure.map(el => { return el.money}) ;
@@ -67,10 +77,11 @@ const expensesAmount = async() =>{
 }
 
 
-const currentBalance = async(req , res) =>{
+const currentBalance = async(req , res) =>{ 
     try{
-        const income = await incomeAmount();
-        const expenses = await expensesAmount();
+        const{user} = req.params
+        const income = await incomeAmount(user); // el user que traigo por parmas lo voy a utiilizar en esta funcion
+        const expenses = await expensesAmount(user); // el user que traigo por parmas lo voy a utiilizar en esta funcion
         let balance = income - expenses;
         balance = balance.toString()
         return res.status(200).send(balance)
@@ -78,6 +89,7 @@ const currentBalance = async(req , res) =>{
         res.send(error);
     }
 }
+
 
 
 module.exports={incomeTotal, expenditureTotal , currentBalance}

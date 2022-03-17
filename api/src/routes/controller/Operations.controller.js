@@ -1,4 +1,4 @@
-const {Operation} = require("../../db.js");
+const {Operation, User} = require("../../db.js");
 
 const postOperation = async(req,res)=>{
     let{
@@ -7,15 +7,24 @@ const postOperation = async(req,res)=>{
         date,
         type,
         category,
+        idUser,
     }= req.body;
     try{
+        const user = idUser && await User.findAll({
+            where:{id:idUser}
+        });
         const operationCreate = await Operation.create({
             name,
             money,
             date,
             type,
             category,
+            idUser,
         });
+        console.log(user)
+        for(let i=0; i < user.length; i++){
+            await user[i].addOperation(operationCreate.dataValues.id)
+        }
         return res.status(200).send(operationCreate) 
     }catch(error){
         res.send(error);
@@ -25,7 +34,10 @@ const postOperation = async(req,res)=>{
 
 const getAllOpetations = async(req,res)=>{
     try{
-        const allOperations = await Operation.findAll();
+        const{user} = req.params;
+        const allOperations = await Operation.findAll({
+            where:{idUser:user}
+        });
         return res.status(200).send(allOperations)
     }catch(error){
         res.send(error);
@@ -120,14 +132,18 @@ const getAllEgress = async(req,res) =>{ // ruta para prueba interna
 
 const getFilterType = async(req,res ) =>{
     try{
-        const{type} = req.params;
+        const{user , type} = req.params;
         if(type === "egresos"){
-            const allOperations = await Operation.findAll();
+            const allOperations = await Operation.findAll({
+                where:{idUser: user}
+            });
             const OperationsEgress = allOperations.filter(el => el.type.toLowerCase() === "egreso" );
             return res.status(200).send(OperationsEgress);
         }
         if(type === "ingresos"){
-            const allOperations = await Operation.findAll();
+            const allOperations = await Operation.findAll({
+                where:{idUser: user}
+            });
             const operationsIncome =  allOperations.filter(el => el.type.toLowerCase() === "ingreso");
             return res.status(200).send(operationsIncome)
         }
@@ -140,10 +156,11 @@ const getFilterType = async(req,res ) =>{
 
 const getFilterCategory = async(req, res) => {
     try{
-        const{category} = req.params;
-        const allOperations = await Operation.findAll({ // traigo solamente lo que tiene type:"egreso" 
-            where: {type: "egreso"}
+        const{user,category} = req.params; // agarro por destructurin el params de user y de category
+        const allOperations = await Operation.findAll({ // traigo solamente lo que tiene type:"egreso" y  tambien que sea idUser:user
+            where: {idUser:user , type: "egreso"} 
         });
+        // const operationsEgress = allOperations.filter(el => el.type.toLowerCase() === "egreso" );
         if(category === "all"){
             return res.status(200).send(allOperations);
         }

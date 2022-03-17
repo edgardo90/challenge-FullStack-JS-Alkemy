@@ -14,22 +14,29 @@ const {postOperation,
 
 const {incomeTotal , expenditureTotal , currentBalance} = require("./controller/Balance.controller");
 
+const {postUser, getAllUsers, getUserId} = require("./controller/Users.controller")
+
 const router = Router();
 
 router.post("/createOperation" ,postOperation);
-router.get("/operations", getAllOpetations);
-router.get("/operations/:idOperation",getIdOperation );
-router.delete("/operations/:idOperation", deleteOperation);
-router.put("/operations/:idOperation", modifyOperation);
+router.get("/operations/:user", getAllOpetations);
+router.get("/operation/:idOperation",getIdOperation );
+router.delete("/deleteOperation/:idOperation", deleteOperation);
+router.put("/modifyOperation/:idOperation", modifyOperation);
 router.get("/operationsIncome", getAllIncome); // ruta para prueba interna
 router.get("/opertionsExpenditures" , getAllEgress);// ruta para prueba interna
-router.get("/filterOperations/:type",getFilterType);
-router.get("/filterCategory/:category",getFilterCategory);
+router.get("/filterOperations/:user/:type",getFilterType);
+router.get("/filterCategory/:user/:category",getFilterCategory); // hago un doble parms , el primer es el id del user y el segundo filtrado por category
 
 
-router.get("/ingresos" , incomeTotal);
-router.get("/egresos" , expenditureTotal);
-router.get("/balance", currentBalance)
+router.get("/ingresos/:user" , incomeTotal);
+router.get("/egresos/:user" , expenditureTotal);
+router.get("/balance/:user", currentBalance);
+
+
+router.post("/createUser", postUser);
+router.get("/users",getAllUsers);
+router.get("/users/:id", getUserId);
 
 
 
