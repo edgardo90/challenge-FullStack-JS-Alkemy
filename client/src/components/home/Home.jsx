@@ -12,6 +12,7 @@ import Filtering from "./Filtering";
 // import logo from "./css/logo512.png"
 import loading from "./css/cargando.gif"
 import styles from "./css/Home.module.css"
+import OrderDate from "./OrderDate";
 
 
 export default function Home(){
@@ -20,6 +21,7 @@ export default function Home(){
      const finalBalance = useSelector(state => state.balance);
      const finalIncome = useSelector(state => state.finalIncome);
      const finalExpenditure = useSelector(state => state.finalExpenditure)
+     const [order , setOrder] = useState("");
 
      const [currentPage , setCurrentPage] = useState(1);
      const [operationsPerPage] = useState(10);
@@ -78,6 +80,7 @@ export default function Home(){
                 <div className={styles.selectAndButton}>
                  <button  className={styles.button}  onClick={event => handleClick(event)}>Recargar la app</button>
                  <Filtering/>
+                 <OrderDate setCurrentPage={setCurrentPage} setOrder={setOrder} />
                  <Link to="/createOperation"  ><button  className={styles.button} >Crear operacion</button> </Link>
                 </div>
                 <br />
@@ -96,6 +99,7 @@ export default function Home(){
              <div className={styles.selectAndButton}>
                  <button  className={styles.button}  onClick={event => handleClick(event)}>Recargar la app</button>
                  <Filtering/>
+                 <OrderDate setCurrentPage={setCurrentPage} setOrder={setOrder} />
                  <Link to="/createOperation"  ><button  className={styles.button} >Crear operacion</button> </Link>
              </div>
                 <h1 className={styles.h1} >Presopuesto App</h1>
@@ -141,5 +145,3 @@ export default function Home(){
          </div>
      )
 }
-
-// export default Home;
