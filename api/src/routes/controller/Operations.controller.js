@@ -147,7 +147,9 @@ const getFilterType = async(req,res ) =>{
             const operationsIncome =  allOperations.filter(el => el.type.toLowerCase() === "ingreso");
             return res.status(200).send(operationsIncome)
         }
-        const allOperations = await Operation.findAll();
+        const allOperations = await Operation.findAll({
+            where:{idUser: user}
+        });
         return res.status(200).send(allOperations)
     }catch(error){
         res.send(error);
@@ -160,7 +162,6 @@ const getFilterCategory = async(req, res) => {
         const allOperations = await Operation.findAll({ // traigo solamente lo que tiene type:"egreso" y  tambien que sea idUser:user
             where: {idUser:user , type: "egreso"} 
         });
-        // const operationsEgress = allOperations.filter(el => el.type.toLowerCase() === "egreso" );
         if(category === "all"){
             return res.status(200).send(allOperations);
         }
