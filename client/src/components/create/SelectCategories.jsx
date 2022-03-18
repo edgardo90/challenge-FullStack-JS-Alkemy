@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "../home/css/Filtrado.module.css";
 
 export default function SelectCategories({handleSelect}){
     const categories = [
@@ -14,7 +15,7 @@ export default function SelectCategories({handleSelect}){
     return(
         <div>
             <label >Categorias :</label>
-            <select onChange={event => handleSelect(event)}>
+            <select onChange={event => handleSelect(event)} className={styles.select} >
                 <option value="nada">Seleciona una categoria</option>
                 {categories.map(el =>{
                     return(

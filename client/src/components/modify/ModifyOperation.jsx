@@ -4,8 +4,8 @@ import { useDispatch , useSelector } from "react-redux";
 import { Link ,useParams , useNavigate} from "react-router-dom";
 import { modifyOperation , getIdOperation } from "../../actions";
 
-import styles from "../create/css/OperationCreate.module.css"
 import SelectCategories from "../create/SelectCategories";
+import styles from "../create/css/OperationCreate.module.css";
 
 
 function validate(input){
