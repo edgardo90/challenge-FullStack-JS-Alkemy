@@ -8,6 +8,7 @@ import {
     FILTER_TYPE,
     FILTER_CATEGORY,
     GET_ID_OPERATION,
+    ORDER_BY_DATE,
 } from "./types";
 import axios from "axios";
 
@@ -125,5 +126,12 @@ export function getIdOperation(id){
             alert("upss hay un error") 
             console.log(error)
         }
+    }
+}
+
+export function orderByDate(payload){
+    return{
+        type: ORDER_BY_DATE,
+        payload
     }
 }
