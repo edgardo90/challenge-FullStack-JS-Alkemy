@@ -21,7 +21,7 @@ export default function Home(){
      const finalBalance = useSelector(state => state.balance);
      const finalIncome = useSelector(state => state.finalIncome);
      const finalExpenditure = useSelector(state => state.finalExpenditure)
-     const [order , setOrder] = useState("");
+     const [ , setOrder] = useState("");
 
      const [currentPage , setCurrentPage] = useState(1);
      const [operationsPerPage] = useState(10);

@@ -11,6 +11,7 @@ export default function SelectType({handleRadio}){
                 return(
                 <label key={el}> {el}
                  <input
+                  style={{cursor:"pointer"}}
                   type="radio"
                   id={el}
                   name="type"
