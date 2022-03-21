@@ -117,7 +117,7 @@ export default function ModifyOperation(){
                          onChange={event => handleChange(event)}
                         />
                         {!data.date && 
-                        <p style={{color:"black" ,fontWeight:700 , fontSize:14 }}>fecha actual: {idOperation.date} </p>}
+                        <p style={{color:"black" ,fontWeight:700 , fontSize:14 }}>fecha actual: {idOperation.date.split("-").reverse().join("-")} </p>}
                     </div>
                     <br />
                     <div>

@@ -40,7 +40,7 @@ export default function Table({name ,money ,date , type , id , category , getBal
                  <h2 className={styles.nameLong} >{`Concepto: ${name}`}</h2> 
                  }
 
-                <h5 className={styles.leter}>Fecha: {date}
+                <h5 className={styles.leter}>Fecha: {date.split("-").reverse().join("-")}
                 <br />
                 Monto: ${money}
                 </h5>
