@@ -2,18 +2,17 @@ import React from "react";
 import {useEffect, useState } from "react"
 import {useDispatch , useSelector} from "react-redux";
 import {getOperations , getBalance , getFinalIncome , getFinalExpenditure} from "../../actions/index"
+import {Link , useParams} from "react-router-dom"
 import Balance from "../balance/Balance";
 import Card from "../card/Card";
-import {Link} from "react-router-dom"
 import Paginado from "./Paginado";
 import Filtering from "./Filtering";
+import OrderDate from "./OrderDate";
 
 
 // import logo from "./css/logo512.png"
 import loading from "./css/cargando.gif"
 import styles from "./css/Home.module.css"
-import OrderDate from "./OrderDate";
-
 
 export default function Home(){
      const dispatch = useDispatch();
@@ -22,6 +21,8 @@ export default function Home(){
      const finalIncome = useSelector(state => state.finalIncome);
      const finalExpenditure = useSelector(state => state.finalExpenditure)
      const [ , setOrder] = useState("");
+     const {userId} = useParams()
+     
 
      const [currentPage , setCurrentPage] = useState(1);
      const [operationsPerPage] = useState(10);
@@ -37,20 +38,20 @@ export default function Home(){
 
 
      useEffect(()=>{
-         dispatch(getOperations() );
-     },[dispatch]);
+         dispatch(getOperations(userId) );
+     },[dispatch, userId]);
 
      useEffect(()=>{
-         dispatch(getBalance() );
-     },[dispatch]);
+         dispatch(getBalance(userId) );
+     },[dispatch, userId]);
 
      useEffect(()=>{
-         dispatch(getFinalIncome() );
-     },[dispatch]);
+         dispatch(getFinalIncome(userId) );
+     },[dispatch,userId]);
 
      useEffect(()=>{
-         dispatch(getFinalExpenditure() );
-     },[dispatch])
+         dispatch(getFinalExpenditure(userId) );
+     },[dispatch, userId ])
 
     //  console.log(allOperations)
     //  console.log(finalBalance)
@@ -79,7 +80,7 @@ export default function Home(){
             <div>
                 <div className={styles.selectAndButton}>
                  <button  className={styles.button}  onClick={event => handleClick(event)}>Recargar la app</button>
-                 <Filtering/>
+                 <Filtering userId={userId}/>
                  <OrderDate setCurrentPage={setCurrentPage} setOrder={setOrder} />
                  <Link to="/createOperation"  ><button  className={styles.button} >Crear operacion</button> </Link>
                 </div>
@@ -98,7 +99,7 @@ export default function Home(){
          <div>
              <div className={styles.selectAndButton}>
                  <button  className={styles.button}  onClick={event => handleClick(event)}>Recargar la app</button>
-                 <Filtering/>
+                 <Filtering userId={userId}/>
                  <OrderDate setCurrentPage={setCurrentPage} setOrder={setOrder} />
                  <Link to="/createOperation"  ><button  className={styles.button} >Crear operacion</button> </Link>
              </div>

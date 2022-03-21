@@ -8,7 +8,9 @@ import {
     FILTER_TYPE,
     FILTER_CATEGORY,
     GET_ID_OPERATION,
-    ORDER_BY_DATE, 
+    ORDER_BY_DATE,
+    //
+    GET_USERS,
 } from "../actions/types";
 
 
@@ -19,12 +21,19 @@ const initialState ={
     finalIncome:[],
     finalExpenditure:[],
     operationId:[],
+    users:[],
 }
 
 
 
 function reducer (state=initialState, {type,payload}){
     switch(type){
+        case GET_USERS:
+            return{
+                ...state,
+                users: payload,
+            }
+
         case GET_OPERATIONS:
             return{
                 ...state,

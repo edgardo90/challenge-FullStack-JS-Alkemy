@@ -8,3 +8,5 @@ export const FILTER_TYPE = "FILTER_TYPE";
 export const FILTER_CATEGORY = "FILTER_CATEGORY";
 export const GET_ID_OPERATION = "GET_ID_OPERATION";
 export const ORDER_BY_DATE = "ORDER_BY_DATE";
+//
+export const GET_USERS = "GET_USERS";

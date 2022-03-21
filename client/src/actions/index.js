@@ -9,12 +9,24 @@ import {
     FILTER_CATEGORY,
     GET_ID_OPERATION,
     ORDER_BY_DATE,
+    //
+    GET_USERS,
 } from "./types";
 import axios from "axios";
 
-export function getOperations(){
+export function getUsers(){
     return async function(dispatch){
-        const json = await axios.get("http://localhost:3001/operations");
+        const json = await axios.get("http://localhost:3001/users/");
+        return dispatch({
+            type: GET_USERS,
+            payload: json.data,
+        })
+    }
+}
+
+export function getOperations(userId){
+    return async function(dispatch){
+        const json = await axios.get( `http://localhost:3001/operations/${userId}` );
         return dispatch({
             type: GET_OPERATIONS,
             payload: json.data
@@ -22,9 +34,9 @@ export function getOperations(){
     }
 }
 
-export function getBalance(){
+export function getBalance(userId){
     return async function(dispatch){
-        const json = await axios.get("http://localhost:3001/balance");
+        const json = await axios.get(`http://localhost:3001/balance/${userId}`);
         return dispatch({
             type: GET_BALANCE,
             payload: json.data
@@ -32,9 +44,9 @@ export function getBalance(){
     }
 }
 
-export function getFinalIncome(){
+export function getFinalIncome(userId){
     return async function(dispatch){
-        const json = await axios.get("http://localhost:3001/ingresos");
+        const json = await axios.get(`http://localhost:3001/ingresos/${userId}`);
         return dispatch({
             type: GET_FINAL_INCOME,
             payload: json.data,
@@ -42,9 +54,9 @@ export function getFinalIncome(){
     }
 }
 
-export function getFinalExpenditure(){
+export function getFinalExpenditure(userId){
     return async function(dispatch){
-        const json = await axios.get("http://localhost:3001/egresos");
+        const json = await axios.get(`http://localhost:3001/egresos/${userId}`);
         return dispatch({
             type: GET_FINAL_EXPENDITURE,
             payload: json.data,
@@ -80,7 +92,7 @@ export function deleteOperation(idOperation){
 export function modifyOperation(idOperation , newData){
     return async function(){
         try{
-            await axios.put(`http://localhost:3001/operations/${idOperation}`,{
+            await axios.put(`http://localhost:3001/modifyOperation/${idOperation}`,{
                 name: newData.name,
                 money: newData.money,
                 date: newData.date,
@@ -94,9 +106,9 @@ export function modifyOperation(idOperation , newData){
     }
 }
 
-export function filterType(type){
+export function filterType(userId ,type){
     return async function(dispatch){
-        const json = await axios.get(`http://localhost:3001/filterOperations/${type}`);
+        const json = await axios.get(`http://localhost:3001/filterOperations/${userId}/${type}`);
         return dispatch({
             type: FILTER_TYPE,
             payload: json.data,
@@ -104,9 +116,9 @@ export function filterType(type){
     }
 }
 
-export function filterCategory(category){
+export function filterCategory(userId,category){
     return async function(dispatch){
-        const json = await axios.get(`http://localhost:3001/filterCategory/${category}`);
+        const json = await axios.get(`http://localhost:3001/filterCategory/${userId}/${category}`);
         return dispatch({
             type: FILTER_CATEGORY,
             payload: json.data,
@@ -117,7 +129,7 @@ export function filterCategory(category){
 export function getIdOperation(id){
     return async function(dispatch){
         try{
-            const json = await axios.get(`http://localhost:3001/operations/${id}`);
+            const json = await axios.get(`http://localhost:3001/operation/${id}`);
             return dispatch({
                 type: GET_ID_OPERATION,
                 payload: json.data,

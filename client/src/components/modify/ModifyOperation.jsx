@@ -33,8 +33,9 @@ export default function ModifyOperation(){
         dispatch(getIdOperation(id))
     },[dispatch,id])
 
-    console.log(idOperation.id !== id ? "esto es una prueba" : idOperation )
-    // const {name , date , money , category} =  idOperation.id === id && idOperation
+    console.log(idOperation.id !== id ? "no trae la info de operacion" : idOperation )
+    const {idUser} =  idOperation.id === id && idOperation
+    console.log(idUser)
 
 
     const [data , setData] = useState({
@@ -79,12 +80,12 @@ export default function ModifyOperation(){
             money:"",
             category:"", 
         })
-        navigate("/")
+        navigate(`/home/${idUser}`)
     }
 
         return(
             <div>
-                <Link to="/" ><button className={styles.botonHome} >Volver al inicio</button> </Link>
+                <Link to= { `/home/${idUser}` } ><button className={styles.botonHome} >Volver al inicio</button> </Link>
                 <h1 className={styles.titulo} >Modifica la operacion</h1>
                 <form  onSubmit={event => handleSubmit(event)}  className={styles.formulario} >
                     <div>

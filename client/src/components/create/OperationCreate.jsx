@@ -3,10 +3,10 @@ import {useState} from "react";
 import {useDispatch} from "react-redux"
 import {Link , useNavigate} from "react-router-dom";
 import { postOperation} from "../../actions";
+import SelectType from "./SelectType";
+import SelectCategories from "./SelectCategories";
 
 import styles from "./css/OperationCreate.module.css"
-import SelectCategories from "./SelectCategories";
-import SelectType from "./SelectType";
 
 
 function validate(input){
@@ -28,7 +28,8 @@ function validate(input){
 
 export default function OperationCreate(){
     const navigate = useNavigate();
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    
 
     const [data , setData] = useState({
         type:"",

@@ -5,10 +5,10 @@ import { filterType , filterCategory } from "../../actions";
 
 import styles from "./css/Filtrado.module.css"
 
-export default function Filtering(){
+export default function Filtering({userId}){
     const dispatch = useDispatch();
 
-    const [data , setData] = useState({type:"" })
+    const [data , setData] = useState({type:"" }) // lo utilizo para saber el estado de type
 
     const types = ["Todos", "Ingresos" , "Egresos"];
 
@@ -27,12 +27,12 @@ export default function Filtering(){
             ...data,
             type: event.target.value
         }))
-        dispatch(filterType(event.target.value))
+        dispatch(filterType(userId ,event.target.value))
         // console.log(data.type)
     }
 
     function handleFilterCategory(event){
-        dispatch(filterCategory(event.target.value));
+        dispatch(filterCategory(userId , event.target.value));
     }
 
 
@@ -47,7 +47,7 @@ export default function Filtering(){
                     )
                 })}
             </select>
-            {data.type === "egresos" &&
+            {data.type === "egresos" && // si data.type es "egreso" va aparecer el select de categorias
             <select className={styles.select} onChange={event => handleFilterCategory(event)} >
                 <option value="all">Filtrar por categorias/ todos</option>
                 {categories.map(el => {
