@@ -7,12 +7,12 @@ import Card from "../card/Card";
 import {Link} from "react-router-dom"
 import Paginado from "./Paginado";
 import Filtering from "./Filtering";
+import OrderDate from "./OrderDate";
 
 
 // import logo from "./css/logo512.png"
 import loading from "./css/cargando.gif"
 import styles from "./css/Home.module.css"
-import OrderDate from "./OrderDate";
 
 
 export default function Home(){
@@ -81,11 +81,11 @@ export default function Home(){
                  <button  className={styles.button}  onClick={event => handleClick(event)}>Recargar la app</button>
                  <Filtering/>
                  <OrderDate setCurrentPage={setCurrentPage} setOrder={setOrder} />
-                 <Link to="/createOperation"  ><button  className={styles.button} >Crear operacion</button> </Link>
+                 <Link to="/createOperation/"  ><button  className={styles.button} >Crear operacion</button> </Link>
                 </div>
                 <br />
                 <h1 className={styles.h1} >Presopuesto App</h1>
-                <div className={styles.notCountryes} >
+                <div className={styles.notOperation} >
                     {/* <img src={logo} alt="cargando ..." /> */}
                      <img className= {styles.imag} src={loading} alt="Loading" /> 
                     <h1>{time} </h1> 
