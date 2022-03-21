@@ -7,13 +7,14 @@ import {
     DELETE_OPERATION,
     FILTER_TYPE,
     FILTER_CATEGORY,
-    GET_ID_OPERATION, 
+    GET_ID_OPERATION,
+    ORDER_BY_DATE, 
 } from "../actions/types";
 
 
 const initialState ={
     operations:[],
-    copyOperations:[],
+    // copyOperations:[],
     balance:[],
     finalIncome:[],
     finalExpenditure:[],
@@ -28,7 +29,7 @@ function reducer (state=initialState, {type,payload}){
             return{
                 ...state,
                 operations: payload,
-                copyOperations: payload,
+                // copyOperations: payload,
             }
 
         case GET_BALANCE:
@@ -80,6 +81,43 @@ function reducer (state=initialState, {type,payload}){
             ...state,
             operationId: payload,
         }
+
+    case ORDER_BY_DATE:
+        if(payload === "near"){
+            const orderDate = state.operations.sort(function(a,b){
+                if(new Date(a.date) > new Date(b.date) ){
+                    return -1;
+                }
+                if(new Date(a.date) < new Date(b.date) ){
+                    return 1;
+                }
+                return 0;
+            });
+            return{
+                ...state,
+                operations : orderDate,
+            }
+        }else if(payload === "far"){
+            const orderDate = state.operations.sort(function(a,b){
+                if(new Date(a.date) < new Date(b.date) ){
+                    return -1;
+                }
+                if(new Date(a.date) > new Date(b.date) ){
+                    return 1;
+                }
+                return 0;
+            });
+            return{
+                ...state,
+                operations : orderDate,
+            }
+        }
+        const orderDate = state.operations
+        return{
+            ...state,
+            operations : orderDate
+        }
+
 
         default: return state;
     }
