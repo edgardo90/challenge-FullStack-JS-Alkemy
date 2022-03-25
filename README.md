@@ -1,3 +1,18 @@
+##  Para tener en cuenta
+
+hacer un archivo .env en api para que funcione en su estado local :
+DB_USER=
+DB_PASSWORD=
+DB_HOST=
+crear una base de datos con el nombre "presupestoApp".
+Para iniciar es npm run start-local estando en la carpeta api.
+
+Para iniciar front npm start desde la carpeta client
+
+En la rama "main" se encuentra la app sin autenticacion.
+En la rama "create-user" se encuentra la app con autenticacion.
+
+
 # CHALLENGE FULL STACK - JavaScript 🚀
 
 ## Objetivo
