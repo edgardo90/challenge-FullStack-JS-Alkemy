@@ -9,6 +9,8 @@ Para iniciar es npm run start-local estando en la carpeta api.
 
 Para iniciar front npm start desde la carpeta client
 
+En la rama 
+
 # CHALLENGE FULL STACK - JavaScript 🚀
 
 ## Objetivo
