@@ -11,6 +11,8 @@ import {
     ORDER_BY_DATE,
     //
     GET_USERS,
+    POST_USER,
+    GET_EMAIL_USER
 } from "./types";
 import axios from "axios";
 
@@ -23,6 +25,32 @@ export function getUsers(){
         })
     }
 }
+
+export function postUser(payload){
+    return async function(dispatch){
+        const json = await axios.post("http://localhost:3001/createUser", payload);
+        return dispatch({
+            type: POST_USER,
+            json,
+        })   
+    }
+}
+
+export function getEmailUser(email){
+    return async function(dispatch){
+        try{
+            const json = await axios.get(`http://localhost:3001/users/${email}`);
+            return dispatch({
+                type: GET_EMAIL_USER,
+                payload: json.data
+            })
+        }catch(error){
+            alert("ups hay un error con tu usuario")
+            console.log(error)
+        }
+    }
+}
+
 
 export function getOperations(userId){
     return async function(dispatch){

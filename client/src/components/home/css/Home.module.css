@@ -1,6 +1,6 @@
 .h1{
     text-align: center; /*lo mueve al centro  */
-    margin-top: 3%;
+    margin-top: 3.5%;
     color: rgb(101, 112, 235);
     font-size: 50px;
     font-family: 'Cookie', cursive;
@@ -136,7 +136,7 @@
     border-radius: 15px;
 }
 
-.notCountryes{
+.notOperation{
     text-align: center;
 }
 
@@ -144,3 +144,4 @@
     border-radius: 9999px;
     cursor: progress;
 }
+

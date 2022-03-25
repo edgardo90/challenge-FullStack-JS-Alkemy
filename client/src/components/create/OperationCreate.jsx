@@ -1,10 +1,11 @@
 import React from "react";
-import {useState} from "react";
-import {useDispatch} from "react-redux"
+import {useState, useEffect} from "react";
+import {useDispatch , useSelector} from "react-redux"
 import {Link , useNavigate} from "react-router-dom";
-import { postOperation} from "../../actions";
+import { postOperation , getEmailUser} from "../../actions";
 import SelectType from "./SelectType";
 import SelectCategories from "./SelectCategories";
+import { useAuth } from "../AuthProvider";
 
 import styles from "./css/OperationCreate.module.css"
 
@@ -29,6 +30,15 @@ function validate(input){
 export default function OperationCreate(){
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const {user} = useAuth() // traigo el user importado de AuthProvider.js
+    console.log(user.email)
+
+    const userByEmail = useSelector(state => state.userEmail);
+
+    useEffect(()=>{
+        dispatch(getEmailUser(user.email))
+    },[dispatch, user.email])
+    console.log(userByEmail)
     
 
     const [data , setData] = useState({
@@ -36,7 +46,8 @@ export default function OperationCreate(){
         name:"",
         date:"",
         money:"",
-        category:""  ,
+        category:"" ,
+        idUser: userByEmail.id ,
     })
     const [errors , setErrors] = useState({})
 
@@ -88,16 +99,17 @@ export default function OperationCreate(){
             name: "",
             date: "",
             money:"",
-            category:"", 
+            category:"",
+            idUser:"", 
         })
-        navigate("/")
+        navigate("/home")
     }
 
 
 
     return(
         <div>
-            <Link to="/" ><button className={styles.botonHome} >Volver al inicio</button> </Link>
+            <Link to="/home" ><button className={styles.botonHome} >Volver al inicio</button> </Link>
             <h1 className={styles.titulo} >Agrega una nueva Operacion</h1>
             <form  onSubmit={event => handleSubmit(event)}  className={styles.formulario} >
                 <div>
@@ -159,7 +171,11 @@ export default function OperationCreate(){
                 </div>
                 <br />
 
-                <button disabled={!data.name || !data.money} className={!data.name || !data.money ? styles.btn  : styles.btnCreate} type="submit"> Agregar operacion </button>
+                <button disabled={!data.name || !data.money} 
+                className={!data.name || !data.money ? styles.btn  : styles.btnCreate} type="submit">
+                     Agregar operacion 
+                </button>
+                
             </form>
         </div>
     )

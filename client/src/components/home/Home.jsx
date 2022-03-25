@@ -1,27 +1,33 @@
 import React from "react";
 import {useEffect, useState } from "react"
 import {useDispatch , useSelector} from "react-redux";
-import {getOperations , getBalance , getFinalIncome , getFinalExpenditure} from "../../actions/index"
-import {Link , useParams} from "react-router-dom"
+import {getOperations , getBalance , getFinalIncome , getFinalExpenditure, getEmailUser } from "../../actions/index"
+import {Link, useNavigate  } from "react-router-dom"
 import Balance from "../balance/Balance";
 import Card from "../card/Card";
 import Paginado from "./Paginado";
 import Filtering from "./Filtering";
 import OrderDate from "./OrderDate";
 
+import { useAuth } from "../AuthProvider";
 
-// import logo from "./css/logo512.png"
+
 import loading from "./css/cargando.gif"
 import styles from "./css/Home.module.css"
 
+
 export default function Home(){
+     const navigate = useNavigate();
+     const {logout ,user ,} = useAuth() // traigo el user importado de AuthProvider.js
+     console.log(user.email)
+
      const dispatch = useDispatch();
      const allOperations = useSelector(state => state.operations);
      const finalBalance = useSelector(state => state.balance);
      const finalIncome = useSelector(state => state.finalIncome);
-     const finalExpenditure = useSelector(state => state.finalExpenditure)
+     const finalExpenditure = useSelector(state => state.finalExpenditure);
+     const userByEmail =  useSelector( state =>  state.userEmail);
      const [ , setOrder] = useState("");
-     const {userId} = useParams()
      
 
      const [currentPage , setCurrentPage] = useState(1);
@@ -38,20 +44,25 @@ export default function Home(){
 
 
      useEffect(()=>{
-         dispatch(getOperations(userId) );
-     },[dispatch, userId]);
+         dispatch(getOperations(userByEmail.id) );
+     },[dispatch, userByEmail.id]);
 
      useEffect(()=>{
-         dispatch(getBalance(userId) );
-     },[dispatch, userId]);
+         dispatch(getBalance(userByEmail.id) );
+     },[dispatch, userByEmail.id]);
 
      useEffect(()=>{
-         dispatch(getFinalIncome(userId) );
-     },[dispatch,userId]);
+         dispatch(getFinalIncome(userByEmail.id) );
+     },[dispatch,userByEmail.id]);
 
      useEffect(()=>{
-         dispatch(getFinalExpenditure(userId) );
-     },[dispatch, userId ])
+         dispatch(getFinalExpenditure(userByEmail.id) );
+     },[dispatch, userByEmail.id ])
+
+     useEffect(()=>{
+         dispatch(getEmailUser( user.email)) 
+     },[dispatch,user.email]) 
+    //  console.log(userByEmail)
 
     //  console.log(allOperations)
     //  console.log(finalBalance)
@@ -60,10 +71,15 @@ export default function Home(){
 
     function handleClick(event){ // handle para recargar la pagina
         event.preventDefault();
-        dispatch(getBalance() );
-        dispatch(getFinalIncome() );
-        dispatch(getFinalExpenditure() );
-        dispatch(getOperations() );
+        dispatch(getBalance(userByEmail.id) );
+        dispatch(getFinalIncome(userByEmail.id) );
+        dispatch(getFinalExpenditure(userByEmail.id) );
+        dispatch(getOperations(userByEmail.id) );
+    }
+
+
+    function handleLogout(){
+        logout();
     }
 
 
@@ -75,21 +91,22 @@ export default function Home(){
     },[])
     // console.log(time)
 
+
     if(time){ // un time para simular que la pagina esta cargando
         return(
             <div>
                 <div className={styles.selectAndButton}>
                  <button  className={styles.button}  onClick={event => handleClick(event)}>Recargar la app</button>
-                 <Filtering userId={userId}/>
+                 <Filtering userId={userByEmail.id}/>
                  <OrderDate setCurrentPage={setCurrentPage} setOrder={setOrder} />
-                 <Link to="/createOperation"  ><button  className={styles.button} >Crear operacion</button> </Link>
+                 <Link to="/createOperation"  ><button   className={styles.button} >Crear operacion</button> </Link>
+                 <button className={styles.button}  onClick={handleLogout} >Salir de la sesion</button>
                 </div>
                 <br />
                 <h1 className={styles.h1} >Presopuesto App</h1>
-                <div className={styles.notCountryes} >
-                    {/* <img src={logo} alt="cargando ..." /> */}
-                     <img className= {styles.imag} src={loading} alt="Loading" /> 
-                    <h1>{time} </h1> 
+                <div className={styles.notOperation} >
+                    <img className= {styles.imag} src={loading} alt="Loading" /> 
+                    <h2>{time} </h2> 
                 </div>
             </div>
         )
@@ -99,9 +116,10 @@ export default function Home(){
          <div>
              <div className={styles.selectAndButton}>
                  <button  className={styles.button}  onClick={event => handleClick(event)}>Recargar la app</button>
-                 <Filtering userId={userId}/>
+                 <Filtering userId={userByEmail.id}/>
                  <OrderDate setCurrentPage={setCurrentPage} setOrder={setOrder} />
                  <Link to="/createOperation"  ><button  className={styles.button} >Crear operacion</button> </Link>
+                 <button className={styles.button} onClick={handleLogout} >Salir de la sesion</button>
              </div>
                 <h1 className={styles.h1} >Presopuesto App</h1>
              <br />

@@ -10,3 +10,5 @@ export const GET_ID_OPERATION = "GET_ID_OPERATION";
 export const ORDER_BY_DATE = "ORDER_BY_DATE";
 //
 export const GET_USERS = "GET_USERS";
+export const POST_USER = "POST_USER";
+export const GET_EMAIL_USER = "GET_EMAIL_USER";

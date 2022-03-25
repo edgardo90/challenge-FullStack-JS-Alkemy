@@ -3,8 +3,10 @@ import {  useState, useEffect } from "react";
 import { useDispatch , useSelector } from "react-redux";
 import { Link ,useParams , useNavigate} from "react-router-dom";
 import { modifyOperation , getIdOperation } from "../../actions";
-
 import SelectCategories from "../create/SelectCategories";
+
+import gifLoading from "../home/css/cargando.gif"
+import homeStyles from "../home/css/Home.module.css"
 import styles from "../create/css/OperationCreate.module.css";
 
 
@@ -34,9 +36,7 @@ export default function ModifyOperation(){
     },[dispatch,id])
 
     console.log(idOperation.id !== id ? "no trae la info de operacion" : idOperation )
-    const {idUser} =  idOperation.id === id && idOperation
-    console.log(idUser)
-
+   
 
     const [data , setData] = useState({
         name: "",
@@ -80,12 +80,34 @@ export default function ModifyOperation(){
             money:"",
             category:"", 
         })
-        navigate(`/home/${idUser}`)
+        navigate("/home")
+    }
+
+    const [time , setTime] = useState("cargando...")
+    useEffect(()=>{ // cuando pase x tiempo el setTime se va a setear a  "PAGINA NO ENCONTRADA" para dejar de mostar  "cargando..."
+        setTimeout(()=>{
+            setTime("PAGINA NO ENCONTRADA") 
+        },5000)
+    },[])
+    // console.log(time)
+
+    if(Object.values(idOperation).length < 1 || time === "cargando..."){
+        return(
+        <div style={{marginTop: "10px"}} className={homeStyles.notOperation}>
+            {time === "cargando..." && <img className={homeStyles.imag} src={gifLoading} alt="cargando" />}
+            <h1 >{time}</h1>
+            {time !== "cargando..." && 
+            <h3  >La página que estás buscando no existe.
+            Por favor, disculpa las molestias.</h3>
+            }
+            <Link to="/home" ><button className={styles.botonHome} >volver al home</button></Link>
+        </div>
+        )
     }
 
         return(
             <div>
-                <Link to= { `/home/${idUser}` } ><button className={styles.botonHome} >Volver al inicio</button> </Link>
+                <Link to = "/home" ><button className={styles.botonHome} >Volver al inicio</button> </Link>
                 <h1 className={styles.titulo} >Modifica la operacion</h1>
                 <form  onSubmit={event => handleSubmit(event)}  className={styles.formulario} >
                     <div>
@@ -118,7 +140,9 @@ export default function ModifyOperation(){
                          onChange={event => handleChange(event)}
                         />
                         {!data.date && 
-                        <p style={{color:"black" ,fontWeight:700 , fontSize:14 }}>fecha actual: {idOperation.date} </p>}
+                        <p style={{color:"black" ,fontWeight:700 , fontSize:14 }}>
+                            fecha actual: {idOperation.date && idOperation.date.split("-").reverse().join("-")} 
+                        </p>}
                     </div>
                     <br />
                     <div>

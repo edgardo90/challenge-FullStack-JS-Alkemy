@@ -11,6 +11,8 @@ import {
     ORDER_BY_DATE,
     //
     GET_USERS,
+    POST_USER,
+    GET_EMAIL_USER,
 } from "../actions/types";
 
 
@@ -22,6 +24,7 @@ const initialState ={
     finalExpenditure:[],
     operationId:[],
     users:[],
+    userEmail:[],
 }
 
 
@@ -32,6 +35,17 @@ function reducer (state=initialState, {type,payload}){
             return{
                 ...state,
                 users: payload,
+            }
+
+        case POST_USER:
+            return{
+                ...state,
+            }
+
+        case GET_EMAIL_USER:
+            return{
+                ...state,
+                userEmail: payload
             }
 
         case GET_OPERATIONS:

@@ -9,11 +9,12 @@
     padding-top: 5px; /*agrando el button hacia arriba  */
     padding-bottom: 5px; /* agrando el button hacia abajo */
     background-color: rgba(41, 74, 219, 0.842);
+    color: aliceblue;
     cursor: pointer;
 }
 .botonHome:hover{
     background-color: rgba(160, 208, 212, 0.842);
-    color: rgb(66, 65, 65);
+    color: black;
     padding-left: 11px;/* agrando el button hacia la izquierda  */
     padding-right: 11px; /* agrando el button hacia la derecha */
     padding-top: 6px; /*agrando el button hacia arriba  */
@@ -37,7 +38,7 @@
     margin-left: 35%;
     margin-right: 35%;
     padding: 50px;
-    font-size: 20px; 
+    font-size: 17px; 
     background-position: center center;
     color: rgb(101, 112, 235);
     font-family: 'Cookie', cursive;
@@ -73,6 +74,7 @@
     margin-left: 90px ;
     font-family: 'Cookie', cursive;
     background-color: rgba(41, 74, 219, 0.842);
+    color: azure;
     cursor: pointer;
   }
 
@@ -86,4 +88,17 @@
     color:white;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19) /* creo una sombra en el button */
   }
+
+  .register{
+    position:static ;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    color: rgb(101, 112, 235);
+    font-family: 'Cookie', cursive;
+}
+
+.register:hover{
+  color: #000;
+}
 
