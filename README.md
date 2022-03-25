@@ -9,7 +9,7 @@ Para iniciar es npm run start-local estando en la carpeta api.
 
 Para iniciar front npm start desde la carpeta client
 
-En la rama 
+En la rama create-user se encuentra la app con autenticacion
 
 # CHALLENGE FULL STACK - JavaScript 🚀
 
