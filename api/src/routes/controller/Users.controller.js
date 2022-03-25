@@ -15,13 +15,19 @@ const postUser = async(req , res) =>{
         return res.status(400).json({error:"ya hay un usuario con ese email"});
     }
     try{
-        const userCreate = await bcryptjs.hash(password,10).then(hash =>{
-            User.create({
-                email,
-                name,
-                lastName,
-                password:hash,
-            });
+        // const userCreate = await bcryptjs.hash(password,10).then(hash =>{
+        //     User.create({
+        //         email,
+        //         name,
+        //         lastName,
+        //         password:hash,
+        //     });
+        // });
+        const userCreate = await User.create({
+            email,
+            name,
+            lastName,
+            password
         });
         return res.status(200).send("usuario creado");
     }catch(error){
@@ -52,9 +58,9 @@ const getAllUsers = async(req,res) =>{
 
 const getUserId = async(req , res) =>{
     try{
-        const{id} = req.params;
+        const{email} = req.params;
         const allUsers = await dbUser();
-        const user = allUsers.find(el => el.id.toLowerCase() === id.toLowerCase() );
+        const user = allUsers.find(el => el.email.toLowerCase() === email.toLowerCase() );
         if(user){
             return res.status(200).send(user)
         }

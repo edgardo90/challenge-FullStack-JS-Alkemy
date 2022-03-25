@@ -36,7 +36,7 @@ router.get("/balance/:user", currentBalance);
 
 router.post("/createUser", postUser);
 router.get("/users",getAllUsers);
-router.get("/users/:id", getUserId);
+router.get("/users/:email", getUserId);
 
 
 
