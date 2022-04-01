@@ -103,7 +103,7 @@ export default function Home(){
                  <button className={styles.button}  onClick={handleLogout} >Salir de la sesion</button>
                 </div>
                 <br />
-                <h1 className={styles.h1} >Presopuesto App</h1>
+                <h1 className={styles.h1} >Presopuesto App, bienbenido {userByEmail && userByEmail.name}</h1>
                 <div className={styles.notOperation} >
                     <img className= {styles.imag} src={loading} alt="Loading" /> 
                     <h2>{time} </h2> 
@@ -121,7 +121,7 @@ export default function Home(){
                  <Link to="/createOperation"  ><button  className={styles.button} >Crear operacion</button> </Link>
                  <button className={styles.button} onClick={handleLogout} >Salir de la sesion</button>
              </div>
-                <h1 className={styles.h1} >Presopuesto App</h1>
+                <h1 className={styles.h1} >Presopuesto App, bienbenido {userByEmail && userByEmail.name}</h1>
              <br />
              <div className={styles.balance} >
                 <Balance
