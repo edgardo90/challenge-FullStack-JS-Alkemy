@@ -2,7 +2,7 @@ import React from "react";
 import {useEffect, useState } from "react"
 import {useDispatch , useSelector} from "react-redux";
 import {getOperations , getBalance , getFinalIncome , getFinalExpenditure, getEmailUser } from "../../actions/index"
-import {Link, useNavigate  } from "react-router-dom"
+import {Link} from "react-router-dom"
 import Balance from "../balance/Balance";
 import Card from "../card/Card";
 import Paginado from "./Paginado";
@@ -17,7 +17,6 @@ import styles from "./css/Home.module.css"
 
 
 export default function Home(){
-     const navigate = useNavigate();
      const {logout ,user ,} = useAuth() // traigo el user importado de AuthProvider.js
      console.log(user.email)
 
@@ -149,7 +148,7 @@ export default function Home(){
                              />
                          </div>
                      )
-                 }) : <h1 className={styles.notCountryes}>No hay operaciones</h1>
+                 }) : <h1 className={styles.notOperation}>No hay operaciones</h1>
                    }
              </div>
              <div className={styles.paginado}>
