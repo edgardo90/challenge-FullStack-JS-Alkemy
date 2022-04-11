@@ -1,6 +1,6 @@
 const {Operation} = require("../../db.js");
 
-const incomeTotal = async(req,res) =>{
+const incomeTotal = async(req,res , next) =>{
     try{
         const allOperations = await Operation.findAll();
         const operationsIncome =  allOperations.filter(el => el.type.toLowerCase() === "ingreso");
@@ -17,12 +17,13 @@ const incomeTotal = async(req,res) =>{
         }
         return res.status(200).send("0")
     }catch(error){
+        next(error)
         res.send(error);
     }
 }
 
 
-const expenditureTotal = async(req,res) =>{
+const expenditureTotal = async(req,res, next) =>{
     try{
         const allOperations = await Operation.findAll();
         const operationsExpenditure =  allOperations.filter(el => el.type.toLowerCase() === "egreso");
@@ -35,6 +36,7 @@ const expenditureTotal = async(req,res) =>{
         }
         return res.status(200).send("0")
     }catch(error){
+        next(error)
         res.send(error);
     }
 }
@@ -67,7 +69,7 @@ const expensesAmount = async() =>{
 }
 
 
-const currentBalance = async(req , res) =>{
+const currentBalance = async(req , res, next) =>{
     try{
         const income = await incomeAmount();
         const expenses = await expensesAmount();
@@ -75,6 +77,7 @@ const currentBalance = async(req , res) =>{
         balance = balance.toString()
         return res.status(200).send(balance)
     }catch(error){
+        next(error)
         res.send(error);
     }
 }
