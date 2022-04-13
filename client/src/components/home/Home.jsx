@@ -13,6 +13,7 @@ import OrderDate from "./OrderDate";
 // import logo from "./css/logo512.png"
 import loading from "./css/cargando.gif"
 import styles from "./css/Home.module.css"
+import "../../index.css"
 
 
 export default function Home(){
@@ -74,10 +75,11 @@ export default function Home(){
     },[])
     // console.log(time)
 
+
     if(time){ // un time para simular que la pagina esta cargando
         return(
             <div>
-                <div className={styles.selectAndButton}>
+                <div className= {styles.selectAndButton}>
                  <button  className={styles.button}  onClick={event => handleClick(event)}>Recargar la app</button>
                  <Filtering/>
                  <OrderDate setCurrentPage={setCurrentPage} setOrder={setOrder} />
@@ -93,15 +95,17 @@ export default function Home(){
             </div>
         )
     }
-
+    
+    
      return(
          <div>
-             <div className={styles.selectAndButton}>
-                 <button  className={styles.button}  onClick={event => handleClick(event)}>Recargar la app</button>
+             <div className= {styles.selectAndButton}>
+                 <button  className={"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"}  onClick={event => handleClick(event)}>Recargar la app</button>
                  <Filtering/>
                  <OrderDate setCurrentPage={setCurrentPage} setOrder={setOrder} />
                  <Link to="/createOperation"  ><button  className={styles.button} >Crear operacion</button> </Link>
              </div>
+             
                 <h1 className={styles.h1} >Presopuesto App</h1>
              <br />
              <div className={styles.balance} >

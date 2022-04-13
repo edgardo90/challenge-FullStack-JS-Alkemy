@@ -1,8 +1,9 @@
 import React from "react";
+import styles from "../home/css/Home.module.css"
 
 export default function Balance( {finalBalance , finalIncome , finalExpenditure } ){
     return(
-        <div>
+        <div className={styles.balance2} >
             <h1>Balance actual:
                 <br />
                 ${finalBalance}
