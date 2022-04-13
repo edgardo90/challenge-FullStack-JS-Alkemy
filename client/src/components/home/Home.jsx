@@ -80,15 +80,29 @@ export default function Home(){
         return(
             <div>
                 <div className= {styles.selectAndButton}>
-                 <button  className={styles.button}  onClick={event => handleClick(event)}>Recargar la app</button>
-                 <Filtering/>
-                 <OrderDate setCurrentPage={setCurrentPage} setOrder={setOrder} />
-                 <Link to="/createOperation/"  ><button  className={styles.button} >Crear operacion</button> </Link>
+                    <div className="navbar-start">
+                        <div className="dropdown">
+                            <label tabindex="0" className="btn btn-ghost btn-circle ">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M4 6h16M4 12h16M4 18h7" /></svg>
+                            </label>
+                            <ul tabindex="0" className="menu menu-compact dropdown-content mt-0 p-2 shadow bg-sky-200 rounded-box w-100">
+                                <li>
+                                    <Filtering/> 
+                                </li>
+                                <li>
+                                    <OrderDate setCurrentPage={setCurrentPage} setOrder={setOrder} />        
+                                </li>
+                                <li>
+                                    <Link to="/createOperation" className={styles.create} >Crear operacion</Link>
+                                </li>
+                            </ul>
+                        </div>
+                        <a href="/" className={styles.reload}>Presopuesto App</a>
+                    </div>
                 </div>
                 <br />
                 <h1 className={styles.h1} >Presopuesto App</h1>
                 <div className={styles.notOperation} >
-                    {/* <img src={logo} alt="cargando ..." /> */}
                      <img className= {styles.imag} src={loading} alt="Loading" /> 
                     <h1>{time} </h1> 
                 </div>
@@ -99,14 +113,28 @@ export default function Home(){
     
      return(
          <div>
-             <div className= {styles.selectAndButton}>
-                 <button  className={"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"}  onClick={event => handleClick(event)}>Recargar la app</button>
-                 <Filtering/>
-                 <OrderDate setCurrentPage={setCurrentPage} setOrder={setOrder} />
-                 <Link to="/createOperation"  ><button  className={styles.button} >Crear operacion</button> </Link>
-             </div>
-             
-                <h1 className={styles.h1} >Presopuesto App</h1>
+            <div className= {styles.selectAndButton}>
+                <div className="navbar-start">
+                    <div className="dropdown">
+                        <label tabindex="0" className="btn btn-ghost btn-circle ">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M4 6h16M4 12h16M4 18h7" /></svg>
+                        </label>
+                        <ul tabindex="0" className="menu menu-compact dropdown-content mt-0 p-2 shadow bg-sky-200 rounded-box w-100">
+                            <li>
+                                <Filtering/> 
+                            </li>
+                            <li>
+                                <OrderDate setCurrentPage={setCurrentPage} setOrder={setOrder} />        
+                            </li>
+                            <li>
+                                <Link to="/createOperation" className={styles.create} >Crear operacion</Link>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="/" className={styles.reload}>Presopuesto App</a>
+                </div>
+            </div>
+                <h1 className={styles.h1} >Bienvenido </h1>
              <br />
              <div className={styles.balance} >
                 <Balance
@@ -134,7 +162,7 @@ export default function Home(){
                              />
                          </div>
                      )
-                 }) : <h1 className={styles.notCountryes}>No hay operaciones</h1>
+                 }) : <h1 className={styles.notOperation}>No hay operaciones</h1>
                    }
              </div>
              <div className={styles.paginado}>

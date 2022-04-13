@@ -16,7 +16,6 @@ export default function OrderDate({setCurrentPage, setOrder}){
 
     return(
         <div>
-            <label>Ordenar: </label>
             <select onChange={event => handleSortDate(event)} className={styles.select} >
                 <option value="">Ordenar por fecha...</option>
                 <option value="near">recientes a antiguas</option>

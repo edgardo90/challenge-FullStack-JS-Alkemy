@@ -12,7 +12,7 @@
     width: 100%;
     top: 0;
     left: 0;
-    background-color: rgba(183, 218, 221, 0.342);
+    background-color: rgb(183, 218, 221);
     display: flex;
     position: fixed; /* lo dejo fijo */
     justify-content:space-between;
@@ -23,10 +23,20 @@
 }
 
 
-.selectAndButton:hover{ /*cambia el color cunado el mouse va ahi  */
-    background-color: rgba(147, 147, 155, 0.952);
-    /* color: white; */
+.reload{
     font-family: 'Cookie', cursive;
+    margin-left: 3%;
+    font-size: 20px;
+    color: blue;
+}
+.reload:hover{
+    color: white;
+}
+
+.create:hover{
+    font-family: 'Cookie', cursive;
+    font-size: 15px;
+    color: rgb(255, 251, 251);
 }
 
 .balance{
@@ -39,8 +49,8 @@
    box-sizing: border-box;
    text-align: center;
     padding: 30px;
-    padding-left: 100px;
-    padding-right: 100px;
+    padding-left: 100px; /*aumento el tamaño hacia a la izquierda  */
+    padding-right: 100px; /*aumento el tamaño hacia a la derecha  */
     font-size: 30px; 
     background-position: center center;
     color: rgb(101, 112, 235);
@@ -50,26 +60,6 @@
     border-radius: 15px;
   }
 
-
-.button{
-    /* border: none; */
-    background-color:rgba(118, 212, 218, 0.664) ;
-    border-radius: 10px;
-    font-family: 'Cookie', cursive;
-    cursor: pointer;
-    margin-left: 8px;
-    margin-right: 8px;
-}
-.button:hover{   /*cambia el botton cuando el mouse pasa por ahi  */
-    background-color: rgb(59, 230, 242);
-    /* color: rgb(15, 14, 14); */
-    color: white;
-    padding-left: 7px;/* agrando el button hacia la izquierda  */
-    padding-right: 7px; /* agrando el button hacia la derecha */
-    padding-top: 3px; /*agrando el button hacia arriba  */
-    padding-bottom: 3px; /* agrando el button hacia abajo */
-    border-radius: 15px;
-}
 
 .divCard{
     margin-left: 20%;

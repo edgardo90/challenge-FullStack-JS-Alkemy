@@ -39,7 +39,7 @@ export default function Filtering(){
     
     return(
         <div>
-            <label  >Filtrar por Tipo: </label>
+            {/* <label  >Filtrar por Tipo: </label> */}
             <select onChange={event=> handleFilterType(event)}  className={styles.select}>
                 {types.map(el => {
                     return(
