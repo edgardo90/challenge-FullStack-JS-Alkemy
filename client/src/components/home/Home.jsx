@@ -58,13 +58,13 @@ export default function Home(){
     //  console.log(finalIncome)
     //  console.log(finalExpenditure)
 
-    function handleClick(event){ // handle para recargar la pagina
-        event.preventDefault();
-        dispatch(getBalance() );
-        dispatch(getFinalIncome() );
-        dispatch(getFinalExpenditure() );
-        dispatch(getOperations() );
-    }
+    // function handleClick(event){ // handle para recargar la pagina
+    //     event.preventDefault();
+    //     dispatch(getBalance() );
+    //     dispatch(getFinalIncome() );
+    //     dispatch(getFinalExpenditure() );
+    //     dispatch(getOperations() );
+    // }
 
 
     const [time , setTime] = useState("cargando...")
@@ -80,28 +80,32 @@ export default function Home(){
         return(
             <div>
                 <div className= {styles.selectAndButton}>
-                    <div className="navbar-start">
-                        <div className="dropdown">
-                            <label tabindex="0" className="btn btn-ghost btn-circle ">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M4 6h16M4 12h16M4 18h7" /></svg>
-                            </label>
-                            <ul tabindex="0" className="menu menu-compact dropdown-content mt-0 p-2 shadow bg-sky-200 rounded-box w-100">
-                                <li>
-                                    <Filtering/> 
-                                </li>
-                                <li>
-                                    <OrderDate setCurrentPage={setCurrentPage} setOrder={setOrder} />        
-                                </li>
-                                <li>
-                                    <Link to="/createOperation" className={styles.create} >Crear operacion</Link>
-                                </li>
-                            </ul>
-                        </div>
-                        <a href="/" className={styles.reload}>Presopuesto App</a>
+                <div className="dropdown ">
+                    <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+                    <div className="drawer-content" >
+                        <label tabindex="0" className="btn btn-ghost btn-circle ml-1 " for="my-drawer"  >
+                            <svg id="my-drawer"  xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M4 6h16M4 12h16M4 18h15" /></svg>
+                        </label>
+                    </div> 
+                    <div class="drawer-side">
+                        <label for="my-drawer" className="drawer-overlay"></label>
+                        <ul tabindex="0"  className="menu menu-compact dropdown-content mt-1 p-2 shadow bg-sky-300 rounded-box w-100">
+                            <li>
+                                <Filtering/>
+                            </li>
+                            <li>
+                                <OrderDate setCurrentPage={setCurrentPage} setOrder={setOrder} /> 
+                            </li>
+                            <li>
+                                <Link to="/createOperation" className={styles.create} >Crear operacion</Link>
+                            </li>
+                        </ul>
                     </div>
+            </div>
+            <a href="/" className={styles.reload} >Presopuesto App </a>
                 </div>
                 <br />
-                <h1 className={styles.h1} >Presopuesto App</h1>
+                <h1 className={styles.h1} >Bienvenido</h1>
                 <div className={styles.notOperation} >
                      <img className= {styles.imag} src={loading} alt="Loading" /> 
                     <h1>{time} </h1> 
@@ -114,7 +118,32 @@ export default function Home(){
      return(
          <div>
             <div className= {styles.selectAndButton}>
-                <div className="navbar-start">
+            <div className="dropdown ">
+                <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+                <div className="drawer-content" >
+                    <label tabindex="0" className="btn btn-ghost btn-circle ml-1 " for="my-drawer"  >
+                            <svg id="my-drawer"  xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M4 6h16M4 12h16M4 18h15" /></svg>
+                    </label>
+                </div> 
+                    <div class="drawer-side">
+                        <label for="my-drawer" className="drawer-overlay"></label>
+                        <ul tabindex="0"  className="menu menu-compact dropdown-content mt-1 p-2 shadow bg-sky-300 rounded-box w-100">
+                            <li>
+                                <Filtering/>
+                            </li>
+                            <li>
+                                <OrderDate setCurrentPage={setCurrentPage} setOrder={setOrder} /> 
+                            </li>
+                            <li>
+                                <Link to="/createOperation" className={styles.create} >Crear operacion</Link>
+                            </li>
+                        </ul>
+                    </div>
+            </div>
+            <a href="/" className={styles.reload} >Presopuesto App </a>
+
+
+                {/* <div className="navbar-start"> // "menu que no  se cierra apretando el botton"
                     <div className="dropdown">
                         <label tabindex="0" className="btn btn-ghost btn-circle ">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M4 6h16M4 12h16M4 18h7" /></svg>
@@ -132,11 +161,12 @@ export default function Home(){
                         </ul>
                     </div>
                     <a href="/" className={styles.reload}>Presopuesto App</a>
-                </div>
+                </div> */}
+
             </div>
                 <h1 className={styles.h1} >Bienvenido </h1>
              <br />
-             <div className={styles.balance} >
+             <div className={styles.box} >
                 <Balance
                  finalBalance = {finalBalance}
                  finalIncome = {finalIncome}

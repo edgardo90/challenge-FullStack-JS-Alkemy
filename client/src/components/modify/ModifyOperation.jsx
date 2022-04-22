@@ -93,24 +93,40 @@ export default function ModifyOperation(){
     },[])
     // console.log(time)
 
-    if(Object.values(idOperation).length < 1 || time === "cargando..."){
+    if(Object.values(idOperation).length < 1 || time === "cargando..."){ // Object.values(idOperation) convierte el objeto en array
         return(
-        <div style={{marginTop: "10px"}} className={homeStyles.notOperation}>
+        <div style={{marginTop: "10px"}} className={styles.center} >
             {time === "cargando..." && <img className={homeStyles.imag} src={gifLoading} alt="cargando" />}
-            <h1 >{time}</h1>
+            <h1 className={homeStyles.notOperation}>{time}</h1>
             {time !== "cargando..." && 
             <h3  >La página que estás buscando no existe.
             Por favor, disculpa las molestias.</h3>
             }
-            <Link to="/" ><button className={styles.botonHome} >volver al home</button></Link>
+            <Link to="/" ><button className={styles.botonHome} >volver al inicio</button></Link>
         </div>
         )
     }
 
         return(
             <div>
-                <Link to="/" ><button className={styles.botonHome} >Volver al inicio</button> </Link>
+                <div className="dropdown">
+                    <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+                    <div className="drawer-content">
+                        <label tabindex="0" className="btn btn-ghost btn-circle " for="my-drawer" >
+                            <svg id="my-drawer"  xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M4 6h16M4 12h16M4 18h15" /></svg>
+                        </label>
+                    </div> 
+                    <div class="drawer-side">
+                        <label for="my-drawer" className="drawer-overlay"></label>
+                        <ul tabindex="0"  className="menu menu-compact dropdown-content mt-1 p-2 shadow bg-sky-300 rounded-box w-100">
+                            <li> <Link to="/" className={styles.home} >Volver al inicio</Link> </li>
+                            <li className={styles.ejemplo}  >agrandoBoooooooooooox</li>
+                        </ul>
+                    </div>
+                </div>
+                
                 <h1 className={styles.titulo} >Modifica la operacion</h1>
+                <div className={styles.box} >
                 <form  onSubmit={event => handleSubmit(event)}  className={styles.formulario} >
                     <div>
                         {idOperation.type === "egreso" &&
@@ -127,10 +143,10 @@ export default function ModifyOperation(){
                          value={data.name}
                          name="name"
                          onChange={event => handleChange(event)}
-                        />
+                         />
                         {errors.name && 
                          <p  style={{color: "red" , fontWeight: 700 , fontSize: 14}}  >{errors.name}</p>
-                         }
+                        }
                     </div>
                     <br />
                     <div>
@@ -140,7 +156,7 @@ export default function ModifyOperation(){
                          name="date"
                          value={data.date}
                          onChange={event => handleChange(event)}
-                        />
+                         />
                         {!data.date && 
                         <p style={{color:"black" ,fontWeight:700 , fontSize:14 }}>fecha actual: {idOperation.date && idOperation.date.split("-").reverse().join("-")} </p>}
                     </div>
@@ -153,15 +169,16 @@ export default function ModifyOperation(){
                          name="money"
                          value={data.money}
                          onChange={event => handleChange(event)}
-                        />
+                         />
                         {errors.money && 
                          <p  style={{color: "red" , fontWeight: 700 , fontSize: 14}}  >{errors.money}</p>
-                         }
+                        }
                     </div>
                     <br />
     
                     <button  className={ styles.btnCreate} type="submit"> Agregar operacion </button>
                 </form>
+                </div>
             </div>
         )
 
