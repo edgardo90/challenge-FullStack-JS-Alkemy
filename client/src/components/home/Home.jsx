@@ -143,9 +143,9 @@ export default function Home(){
                 </div> 
                     <div className="drawer-side">
                         <label  htmlFor="my-drawer" className="drawer-overlay"></label>
-                        <ul tabIndex="0"  className="menu menu-compact dropdown-content mt-1 p-2 shadow bg-sky-300 rounded-box w-100">
-                            <li>
-                                <Filtering userId={userByEmail.id}/>
+                        <ul tabIndex="0"  className="menu menu-compact dropdown-content mt-1 p-2 shadow bg-sky-300 rounded-box w-85">
+                            <li >
+                                <Filtering userId={userByEmail.id} />
                             </li>
                             <li>
                                 <OrderDate setCurrentPage={setCurrentPage} setOrder={setOrder} /> 

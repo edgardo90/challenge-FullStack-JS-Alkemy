@@ -11,7 +11,7 @@ export default function Paginado({allOperations , operationsPerPage, paginado })
     return(
         <nav>
             <ul>
-                {pageNumber && 
+                {pageNumber && pageNumber.length > 1 &&
                 pageNumber.map( el => {
                     return(
                         <button key={el} onClick= {() => paginado(el) } className={styles.paginadoButton}  >{el}</button>

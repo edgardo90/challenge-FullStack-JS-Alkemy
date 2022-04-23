@@ -38,8 +38,8 @@ export default function Filtering({userId}){
 
     
     return(
-        <div>
-            <label  >Filtrar:</label>
+        <div className={styles.letter}>
+            <label className={styles.letter} >Filtrar:</label>
             <select onChange={event=> handleFilterType(event)}  className={styles.select}>
                 {types.map(el => {
                     return(

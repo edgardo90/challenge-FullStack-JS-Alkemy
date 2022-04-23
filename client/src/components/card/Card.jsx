@@ -28,23 +28,25 @@ export default function Table({name ,money ,date , type , id , category , getBal
 
     return(
         <div>
-            <div>
-                <h4 className={!category ? styles.leter : styles.leterAndCategory}>Tipo: {type}
+            <div className={type === "egreso" ? styles.cardEgreso : styles.card} >
+                <h2 className={!category ? styles.leter : styles.leterAndCategory}>Tipo: {type}
                 {type === "egreso" && <br/>
                  }{category && `Categoria: ${category}` }
-                </h4>
+                </h2>
+                <br />
 
-                {name.length < 10 ?
+                {name.length < 9 ?
                  <h2 className={styles.name} >{`Concepto: ${name}`}
                  </h2> :
                  <h2 className={styles.nameLong} >{`Concepto: ${name}`}</h2> 
                  }
+                 <br />
 
                 <h5 className={styles.leter}>Fecha: {date.split("-").reverse().join("/")}
                 <br />
                 Monto: ${money}
                 </h5>
-                <Link to={`/modifyOperation/${id}`} ><button className={styles.buttonModify} >Modificar</button></Link>
+                <Link to={`/modifyOperation/${id}`} ><button  className={styles.buttonModify} >Modificar</button></Link>
                 <button onClick={event => handleDelete(event)} className={styles.button}   >Eleminar</button>
             </div>
         </div>

@@ -5,7 +5,9 @@ export  function ProtectedRoute({children}){
     const {user , loading} = useAuth();
 
     if(loading){ // si loading esta en true va mostrar un h1
-        return( <h1>loading</h1> )
+        return(
+            <h1>Cargando...</h1> 
+        )
     }
 
     if(!user){ // si user es null me devuelve al login

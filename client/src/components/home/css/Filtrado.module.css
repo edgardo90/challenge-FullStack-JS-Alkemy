@@ -17,3 +17,9 @@
     padding-bottom: 2px; /* agrando el button hacia abajo */
     border-radius: 15px;
 }
+
+.letter:hover{
+    font-family: 'Cookie', cursive;
+    font-size: 15px;
+    color: rgb(255, 251, 251);
+}
