@@ -8,7 +8,7 @@ import styles from "./css/Filtrado.module.css"
 export default function Filtering({userId}){
     const dispatch = useDispatch();
 
-    const [data , setData] = useState({type:"" }) // lo utilizo para saber el estado de type
+    const [data , setData] = useState({type:"" }) // lo utilizo para saber el estado de type , para saber que categoria es
 
     const types = ["Todos", "Ingresos" , "Egresos"];
 
@@ -39,7 +39,7 @@ export default function Filtering({userId}){
     
     return(
         <div>
-            <label  >Filtrar por Tipo: </label>
+            <label  >Filtrar:</label>
             <select onChange={event=> handleFilterType(event)}  className={styles.select}>
                 {types.map(el => {
                     return(

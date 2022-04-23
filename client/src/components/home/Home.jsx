@@ -26,9 +26,8 @@ export default function Home(){
      const finalIncome = useSelector(state => state.finalIncome);
      const finalExpenditure = useSelector(state => state.finalExpenditure);
      const userByEmail =  useSelector( state =>  state.userEmail);
-     const [ , setOrder] = useState("");
-     
 
+     const [ , setOrder] = useState("");
      const [currentPage , setCurrentPage] = useState(1);
      const [operationsPerPage] = useState(10);
      const indexOfLastOperations = currentPage * operationsPerPage;
@@ -68,13 +67,13 @@ export default function Home(){
     //  console.log(finalIncome)
     //  console.log(finalExpenditure)
 
-    function handleClick(event){ // handle para recargar la pagina
-        event.preventDefault();
-        dispatch(getBalance(userByEmail.id) );
-        dispatch(getFinalIncome(userByEmail.id) );
-        dispatch(getFinalExpenditure(userByEmail.id) );
-        dispatch(getOperations(userByEmail.id) );
-    }
+    // function handleClick(event){ // handle para recargar la pagina
+    //     event.preventDefault();
+    //     dispatch(getBalance(userByEmail.id) );
+    //     dispatch(getFinalIncome(userByEmail.id) );
+    //     dispatch(getFinalExpenditure(userByEmail.id) );
+    //     dispatch(getOperations(userByEmail.id) );
+    // }
 
 
     function handleLogout(){
@@ -95,14 +94,35 @@ export default function Home(){
         return(
             <div>
                 <div className={styles.selectAndButton}>
-                 <button  className={styles.button}  onClick={event => handleClick(event)}>Recargar la app</button>
-                 <Filtering userId={userByEmail.id}/>
-                 <OrderDate setCurrentPage={setCurrentPage} setOrder={setOrder} />
-                 <Link to="/createOperation"  ><button   className={styles.button} >Crear operacion</button> </Link>
-                 <button className={styles.button}  onClick={handleLogout} >Salir de la sesion</button>
+                    <div className="dropdown ">
+                        <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+                        <div className="drawer-content" >
+                            <label tabIndex="0" className="btn btn-ghost btn-circle ml-1 "  htmlFor="my-drawer">
+                                <svg id="my-drawer"  xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round"  strokeWidth="4" d="M4 6h16M4 12h16M4 18h15" /></svg>
+                            </label>
+                        </div>
+                        <div className="drawer-side">
+                            <label  htmlFor="my-drawer" className="drawer-overlay"></label>
+                            <ul tabIndex="0"  className="menu menu-compact dropdown-content mt-1 p-2 shadow bg-sky-300 rounded-box w-100">
+                                <li>
+                                    <Filtering userId={userByEmail.id}/>
+                                </li>
+                                <li>
+                                    <OrderDate setCurrentPage={setCurrentPage} setOrder={setOrder} /> 
+                                </li>
+                                <li>
+                                    <Link to="/createOperation" className={styles.create} >Crear operacion</Link>
+                                </li>
+                                <li>
+                                    <button className={styles.create}  onClick={handleLogout} >Salir de la sesion</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="/home" className={styles.reload} >Presopuesto App </a>
                 </div>
                 <br />
-                <h1 className={styles.h1} >Presopuesto App, bienbenido {userByEmail && userByEmail.name}</h1>
+                <h1 className={styles.h1} >Bienbenido {userByEmail && userByEmail.name}</h1>
                 <div className={styles.notOperation} >
                     <img className= {styles.imag} src={loading} alt="Loading" /> 
                     <h2>{time} </h2> 
@@ -113,16 +133,37 @@ export default function Home(){
 
      return(
          <div>
-             <div className={styles.selectAndButton}>
-                 <button  className={styles.button}  onClick={event => handleClick(event)}>Recargar la app</button>
-                 <Filtering userId={userByEmail.id}/>
-                 <OrderDate setCurrentPage={setCurrentPage} setOrder={setOrder} />
-                 <Link to="/createOperation"  ><button  className={styles.button} >Crear operacion</button> </Link>
-                 <button className={styles.button} onClick={handleLogout} >Salir de la sesion</button>
-             </div>
-                <h1 className={styles.h1} >Presopuesto App, bienbenido {userByEmail && userByEmail.name}</h1>
+            <div className={styles.selectAndButton}>
+            <div className="dropdown ">
+                <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+                <div className="drawer-content" >
+                    <label tabIndex="0" className="btn btn-ghost btn-circle ml-1 "  htmlFor="my-drawer">
+                            <svg id="my-drawer"  xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round"  strokeWidth="4" d="M4 6h16M4 12h16M4 18h15" /></svg>
+                    </label>
+                </div> 
+                    <div className="drawer-side">
+                        <label  htmlFor="my-drawer" className="drawer-overlay"></label>
+                        <ul tabIndex="0"  className="menu menu-compact dropdown-content mt-1 p-2 shadow bg-sky-300 rounded-box w-100">
+                            <li>
+                                <Filtering userId={userByEmail.id}/>
+                            </li>
+                            <li>
+                                <OrderDate setCurrentPage={setCurrentPage} setOrder={setOrder} /> 
+                            </li>
+                            <li>
+                                <Link to="/createOperation" className={styles.create} >Crear operacion</Link>
+                            </li>
+                            <li>
+                                <button className={styles.create}  onClick={handleLogout} >Salir de la sesion</button>
+                            </li>
+                        </ul>
+                    </div>
+            </div>
+            <a href="/home" className={styles.reload} >Presopuesto App </a>
+            </div>
+                <h1 className={styles.h1} >Bienbenido {userByEmail && userByEmail.name}</h1>
              <br />
-             <div className={styles.balance} >
+             <div className={styles.box} >
                 <Balance
                  finalBalance = {finalBalance}
                  finalIncome = {finalIncome}
