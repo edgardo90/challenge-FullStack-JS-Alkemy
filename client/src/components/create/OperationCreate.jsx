@@ -109,8 +109,24 @@ export default function OperationCreate(){
 
     return(
         <div>
-            <Link to="/home" ><button className={styles.botonHome} >Volver al inicio</button> </Link>
+            <div className="dropdown">
+                <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+                <div className="drawer-content">
+                    <label tabindex="0" className="btn btn-ghost btn-circle " for="my-drawer" >
+                            <svg id="my-drawer"  xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M4 6h16M4 12h16M4 18h15" /></svg>
+                    </label>
+                </div> 
+                    <div class="drawer-side">
+                        <label for="my-drawer" className="drawer-overlay"></label>
+                        <ul tabindex="0"  className="menu menu-compact dropdown-content mt-1 p-2 shadow bg-sky-300 rounded-box w-100">
+                            <li> <Link to="/home" className={styles.home} >Volver al inicio</Link> </li>
+                            <li className={styles.ejemplo}  >agrandoBoooooooooooox</li>
+                        </ul>
+                    </div>
+            </div>
+
             <h1 className={styles.titulo} >Agrega una nueva Operacion</h1>
+            <div className={styles.box}>
             <form  onSubmit={event => handleSubmit(event)}  className={styles.formulario} >
                 <div>
                     <SelectType handleRadio={handleRadio} />
@@ -120,7 +136,7 @@ export default function OperationCreate(){
                 </div>
                 <br />
                 <div>
-                    {data.type === "egreso" &&
+                    {data.type === "egreso" && // si es igual a "egreso" me va a mostrar el  "SelectCategories"
                     <SelectCategories handleSelect={handleSelect} />}
                     {!data.category && data.type === "egreso" &&
                     <p style={{color:"red" ,fontWeight:700 , fontSize:14 }}>selecciona una categoria</p>}
@@ -135,10 +151,10 @@ export default function OperationCreate(){
                      value={data.name}
                      name="name"
                      onChange={event => handleChange(event)}
-                    />
+                     />
                     {errors.name && 
                      <p  style={{color: "red" , fontWeight: 700 , fontSize: 14}}  >{errors.name}</p>
-                     }
+                    }
                 </div>
                 <br />
                 <div>
@@ -149,10 +165,10 @@ export default function OperationCreate(){
                      name="date"
                      value={data.date}
                      onChange={event => handleChange(event)}
-                    />
+                     />
                     {!data.date && 
                      <p  style={{color: "red" , fontWeight: 700 , fontSize: 14}}  >Ingresa una fecha</p>
-                     }
+                    }
                 </div>
                 <br />
                 <div>
@@ -164,10 +180,10 @@ export default function OperationCreate(){
                      style={{width : "200px", heigth : "1px"}}
                      value={data.money}
                      onChange={event => handleChange(event)}
-                    />
+                     />
                     {errors.money && 
                      <p  style={{color: "red" , fontWeight: 700 , fontSize: 14}}  >{errors.money}</p>
-                     }
+                    }
                 </div>
                 <br />
 
@@ -177,6 +193,8 @@ export default function OperationCreate(){
                 </button>
                 
             </form>
+            </div>
+
         </div>
     )
 }
