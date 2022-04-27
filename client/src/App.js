@@ -34,7 +34,14 @@ function App() {
             </ProtectedRoute>
           } />
           
-        <Route path="/modifyOperation/:id" element={<ModifyOperation/>} />
+        <Route 
+          path="/modifyOperation/:id" 
+          element={  
+            <ProtectedRoute>
+              <ModifyOperation/>
+            </ProtectedRoute>
+          } />
+
         <Route path="*" element={<PageNotFound/>} />
       </Routes> 
       </AuthProvider>

@@ -4,6 +4,7 @@ import { useDispatch , useSelector } from "react-redux";
 import { Link ,useParams , useNavigate} from "react-router-dom";
 import { modifyOperation , getIdOperation } from "../../actions";
 import SelectCategories from "../create/SelectCategories";
+import { useAuth } from "../AuthProvider";
 
 import gifLoading from "../home/css/cargando.gif"
 import homeStyles from "../home/css/Home.module.css"
@@ -23,8 +24,9 @@ function validate(input){
 
 
 export default function ModifyOperation(){
-    const {id} = useParams()
-    const idOperation = useSelector(state => state.operationId)
+    const {id} = useParams();
+    const {logout} = useAuth(); // traigo el user importado de AuthProvider.js
+    const idOperation = useSelector(state => state.operationId);
 
     console.log(id)
     
@@ -67,6 +69,10 @@ export default function ModifyOperation(){
         }))
     }
 
+    function handleLogout(){
+        logout();
+    }
+
     function handleSubmit(event){
         event.preventDefault();
         if(Object.values(errors).length > 0  ){
@@ -93,22 +99,73 @@ export default function ModifyOperation(){
 
     if(Object.values(idOperation).length < 1 || time === "cargando..."){
         return(
-        <div style={{marginTop: "10px"}} className={homeStyles.notOperation}>
-            {time === "cargando..." && <img className={homeStyles.imag} src={gifLoading} alt="cargando" />}
-            <h1 >{time}</h1>
-            {time !== "cargando..." && 
-            <h3  >La página que estás buscando no existe.
-            Por favor, disculpa las molestias.</h3>
-            }
-            <Link to="/home" ><button className={styles.botonHome} >volver al home</button></Link>
-        </div>
+            <div>
+                <div className={homeStyles.selectAndButton} >
+                    <div className="dropdown">
+                        <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+                        <div className="drawer-content">
+                            <label tabIndex="0" className="btn btn-ghost btn-circle " htmlFor="my-drawer" >
+                                <svg id="my-drawer"  xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round"  strokeWidth="4" d="M4 6h16M4 12h16M4 18h15" /></svg>
+                            </label>
+                        </div> 
+                        <div className="drawer-side">
+                            <label htmlFor="my-drawer" className="drawer-overlay"></label>
+                            <ul tabIndex="0"  className="menu menu-compact dropdown-content mt-1 p-2 shadow bg-sky-300 rounded-box w-100">
+                                <li>
+                                    <Link to="/home" className={styles.home} >Volver al inicio</Link>
+                                </li>
+                                <li>
+                                    <button className={homeStyles.create}  onClick={handleLogout} >Salir de la sesion</button>
+                                </li>
+                                <li className={styles.ejemplo}  >agrandoBoooooooooooooooooooooox</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <Link to="/home" className={homeStyles.reload} >Presopuesto App </Link>
+                </div>
+
+                <div  className={styles.center}>
+                    {time === "cargando..." && <img className={homeStyles.imag} src={gifLoading} alt="cargando" />}
+                    <h1 className={homeStyles.notOperation} >{time}</h1>
+                    {time !== "cargando..." && 
+                    <h3  >La página que estás buscando no existe.
+                        Por favor, disculpa las molestias.</h3>
+                    }
+                    <Link to="/home" ><button className={styles.botonHome} >volver al home</button></Link>
+                </div>
+            </div>
         )
     }
 
         return(
             <div>
-                <Link to = "/home" ><button className={styles.botonHome} >Volver al inicio</button> </Link>
-                <h1 className={styles.titulo} >Modifica la operacion</h1>
+                <div className={homeStyles.selectAndButton} >
+                    <div className="dropdown">
+                        <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+                        <div className="drawer-content">
+                            <label tabIndex="0" className="btn btn-ghost btn-circle " htmlFor="my-drawer" >
+                                <svg id="my-drawer"  xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round"  strokeWidth="4" d="M4 6h16M4 12h16M4 18h15" /></svg>
+                            </label>
+                        </div> 
+                        <div className="drawer-side">
+                            <label htmlFor="my-drawer" className="drawer-overlay"></label>
+                            <ul tabIndex="0"  className="menu menu-compact dropdown-content mt-1 p-2 shadow bg-sky-300 rounded-box w-100">
+                                <li>
+                                    <Link to="/home" className={styles.home} >Volver al inicio</Link>
+                                </li>
+                                <li>
+                                    <button className={homeStyles.create}  onClick={handleLogout} >Salir de la sesion</button>
+                                </li>
+                                <li className={styles.ejemplo}  >agrandoBoooooooooooooooooooooox</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <Link to="/home" className={homeStyles.reload} >Presopuesto App </Link>
+                </div>
+
+                <h1 className={homeStyles.h1} >Modifica la operacion</h1>
+                <div className={styles.box} >
+
                 <form  onSubmit={event => handleSubmit(event)}  className={styles.formulario} >
                     <div>
                         {idOperation.type === "egreso" &&
@@ -125,7 +182,7 @@ export default function ModifyOperation(){
                          value={data.name}
                          name="name"
                          onChange={event => handleChange(event)}
-                        />
+                         />
                         {errors.name && 
                          <p  style={{color: "red" , fontWeight: 700 , fontSize: 14}}  >{errors.name}</p>
                          }
@@ -138,7 +195,7 @@ export default function ModifyOperation(){
                          name="date"
                          value={data.date}
                          onChange={event => handleChange(event)}
-                        />
+                         />
                         {!data.date && 
                         <p style={{color:"black" ,fontWeight:700 , fontSize:14 }}>
                             fecha actual: {idOperation.date && idOperation.date.split("-").reverse().join("-")} 
@@ -153,15 +210,17 @@ export default function ModifyOperation(){
                          name="money"
                          value={data.money}
                          onChange={event => handleChange(event)}
-                        />
+                         />
                         {errors.money && 
                          <p  style={{color: "red" , fontWeight: 700 , fontSize: 14}}  >{errors.money}</p>
-                         }
+                        }
                     </div>
                     <br />
     
                     <button  className={ styles.btnCreate} type="submit"> Agregar operacion </button>
                 </form>
+
+                </div>
             </div>
         )
 
