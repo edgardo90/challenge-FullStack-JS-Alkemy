@@ -7,7 +7,8 @@ import SelectType from "./SelectType";
 import SelectCategories from "./SelectCategories";
 import { useAuth } from "../AuthProvider";
 
-import styles from "./css/OperationCreate.module.css"
+import styles from "./css/OperationCreate.module.css";
+import stylesHome from "../home/css/Home.module.css";
 
 
 function validate(input){
@@ -30,7 +31,7 @@ function validate(input){
 export default function OperationCreate(){
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const {user} = useAuth() // traigo el user importado de AuthProvider.js
+    const {user, logout} = useAuth() // traigo el user importado de AuthProvider.js
     console.log(user.email)
 
     const userByEmail = useSelector(state => state.userEmail);
@@ -87,6 +88,11 @@ export default function OperationCreate(){
         data.category ="";
     }
 
+    function handleLogout(){
+        logout();
+    }
+
+
     function handleSubmit(event){
         event.preventDefault();
         if(Object.values(errors).length > 0 || errorTypeAndDate > 0 || errroCategory >0 ){
@@ -109,23 +115,32 @@ export default function OperationCreate(){
 
     return(
         <div>
+            <div className={stylesHome.selectAndButton} >
+
             <div className="dropdown">
                 <input id="my-drawer" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content">
-                    <label tabindex="0" className="btn btn-ghost btn-circle " for="my-drawer" >
-                            <svg id="my-drawer"  xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M4 6h16M4 12h16M4 18h15" /></svg>
+                    <label tabIndex="0" className="btn btn-ghost btn-circle " htmlFor="my-drawer" >
+                            <svg id="my-drawer"  xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round"  strokeWidth="4" d="M4 6h16M4 12h16M4 18h15" /></svg>
                     </label>
                 </div> 
-                    <div class="drawer-side">
-                        <label for="my-drawer" className="drawer-overlay"></label>
-                        <ul tabindex="0"  className="menu menu-compact dropdown-content mt-1 p-2 shadow bg-sky-300 rounded-box w-100">
-                            <li> <Link to="/home" className={styles.home} >Volver al inicio</Link> </li>
-                            <li className={styles.ejemplo}  >agrandoBoooooooooooox</li>
+                    <div className="drawer-side">
+                        <label htmlFor="my-drawer" className="drawer-overlay"></label>
+                        <ul tabIndex="0"  className="menu menu-compact dropdown-content mt-1 p-2 shadow bg-sky-300 rounded-box w-100">
+                            <li>
+                                <Link to="/home" className={styles.home} >Volver al inicio</Link>
+                            </li>
+                            <li>
+                            <button className={stylesHome.create}  onClick={handleLogout} >Salir de la sesion</button>
+                            </li>
+                            <li className={styles.ejemplo}  >agrandoBoooooooooooooooooooooox</li>
                         </ul>
                     </div>
             </div>
+            <Link to="/home" className={stylesHome.reload} >Presopuesto App </Link>
+            </div>
 
-            <h1 className={styles.titulo} >Agrega una nueva Operacion</h1>
+            <h1 className={stylesHome.h1} >Agrega una nueva Operacion</h1>
             <div className={styles.box}>
             <form  onSubmit={event => handleSubmit(event)}  className={styles.formulario} >
                 <div>

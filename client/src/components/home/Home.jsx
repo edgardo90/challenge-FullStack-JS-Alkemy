@@ -67,14 +67,6 @@ export default function Home(){
     //  console.log(finalIncome)
     //  console.log(finalExpenditure)
 
-    // function handleClick(event){ // handle para recargar la pagina
-    //     event.preventDefault();
-    //     dispatch(getBalance(userByEmail.id) );
-    //     dispatch(getFinalIncome(userByEmail.id) );
-    //     dispatch(getFinalExpenditure(userByEmail.id) );
-    //     dispatch(getOperations(userByEmail.id) );
-    // }
-
 
     function handleLogout(){
         logout();
@@ -125,7 +117,7 @@ export default function Home(){
                 <h1 className={styles.h1} >Bienbenido {userByEmail && userByEmail.name}</h1>
                 <div className={styles.notOperation} >
                     <img className= {styles.imag} src={loading} alt="Loading" /> 
-                    <h2>{time} </h2> 
+                    <h2 className={styles.loading}>{time} </h2> 
                 </div>
             </div>
         )
@@ -161,7 +153,7 @@ export default function Home(){
             </div>
             <a href="/home" className={styles.reload} >Presopuesto App </a>
             </div>
-                <h1 className={styles.h1} >Bienbenido {userByEmail && userByEmail.name}</h1>
+                <h1 className={styles.h1} >Bienvenido {userByEmail && userByEmail.name}</h1>
              <br />
              <div className={styles.box} >
                 <Balance

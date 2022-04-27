@@ -99,6 +99,8 @@ export default function Register(){
         <div>
             <Link to="/" ><button className={stylesCreate.botonHome} >Iniciar sesion</button> </Link>
             <h1 className={stylesCreate.titulo}>Crea tu usuario</h1>
+            <div className={stylesCreate.box} >
+
             <form className={stylesCreate.formulario} onSubmit={event => handleSubmit(event) } >
                 <div>
                     <label >Ingresa email: </label>
@@ -108,7 +110,7 @@ export default function Register(){
                      style={{width : "190px", heigth : "1px"}}
                      value={user.email}
                      onChange = {event => handleChange(event)}
-                    />
+                     />
                 </div>
                 {errors.email && 
                      <p  style={{color: "red" , fontWeight: 700 , fontSize: 14}}  >{errors.email}</p>
@@ -121,7 +123,7 @@ export default function Register(){
                      name="name"
                      value={user.name}
                      onChange = {event => handleChange(event)}
-                    />
+                     />
                 </div>
                 {errors.name && 
                      <p  style={{color: "red" , fontWeight: 700 , fontSize: 14}}  >{errors.name}</p>
@@ -134,7 +136,7 @@ export default function Register(){
                      name="lastName"
                      value={user.lastName}
                      onChange = {event => handleChange(event)}
-                    />
+                     />
                 </div>
                 {errors.lastName && 
                      <p  style={{color: "red" , fontWeight: 700 , fontSize: 14}}  >{errors.lastName}</p>
@@ -147,16 +149,18 @@ export default function Register(){
                      name="password"
                      value={user.password}
                      onChange = {event => handleChange(event)}
-                    />
+                     />
                 </div>
                 {errors.password && 
                      <p  style={{color: "red" , fontWeight: 700 , fontSize: 14}}  >{errors.password}</p>
                     }
                 <br />
-                <button className={ stylesCreate.btnCreate} type="submit" >
+                <button className={ stylesCreate.btnCreate} style={{marginLeft: "30%"}}  type="submit" >
                     Crear usuario
                 </button>
             </form>
+            </div>
+
         </div>
     )
 

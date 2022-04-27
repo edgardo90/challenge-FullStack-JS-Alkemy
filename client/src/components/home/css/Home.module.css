@@ -158,6 +158,10 @@
     height:65vh ;
 }
 
+.loading{
+    /* margin-bottom: 50%; */
+}
+
 
 
 /*aca comienza modificacion para que sea responsive  */
@@ -191,25 +195,29 @@
 
 
 
-
-
+@media screen and (max-width: 1400px) {
+    .h1 {
+        margin-top: 5%;
+        font-size: 40px;
+    }
+}
 @media screen and (max-width: 1000px) {
     .h1 {
-        margin-top: 7%;
+        margin-top: 6%;
         font-size: 40px;
     }
 }
 
 @media screen and (max-width: 700px) {
     .h1 {
-        margin-top: 10%;
+        margin-top: 8%;
         font-size: 40px;
     }
 }
 
 @media screen and (max-width: 500px) {
     .h1 {
-        margin-top: 14%;
+        margin-top: 11%;
         font-size: 2rem;
     }
 }

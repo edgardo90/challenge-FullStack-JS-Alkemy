@@ -176,6 +176,12 @@
 
 
 
+@media screen and (max-width: 500px) {
+  .formulario{
+    padding-left: 5% ;
+    padding-right: 5%;
+  }
+}
 
 @media screen and (max-width: 700px) {
   .login {
