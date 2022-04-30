@@ -1,7 +1,7 @@
 const bcryptjs = require("bcryptjs");
 const {User , Operation} = require("../../db.js");
 
-const postUser = async(req , res) =>{
+const postUser = async(req , res, next) =>{
     const{
         email,
         name,
@@ -31,8 +31,9 @@ const postUser = async(req , res) =>{
         });
         return res.status(200).send("usuario creado");
     }catch(error){
-    res.send(error)
-  }
+        next(error)
+        res.send(error)
+    }
 }
 
 const dbUser = async()=>{
@@ -47,16 +48,17 @@ const dbUser = async()=>{
     });
 }
 
-const getAllUsers = async(req,res) =>{
+const getAllUsers = async(req,res , next) =>{
     try{
         const allUsers = await dbUser();
         return res.status(200).send(allUsers)
     }catch(error){
+        next(error)
         res.send(error)
   }
 }
 
-const getUserId = async(req , res) =>{
+const getUserEmail = async(req , res , next) =>{ 
     try{
         const{email} = req.params;
         const allUsers = await dbUser();
@@ -66,10 +68,11 @@ const getUserId = async(req , res) =>{
         }
         return res.status(404).json({error:"no se encuentra ese usuario"})
     }catch(error){
+        next(error)
         res.send(error)
     }
 }
 
 
 
-module.exports = {postUser , getAllUsers, getUserId };
+module.exports = {postUser , getAllUsers, getUserEmail };

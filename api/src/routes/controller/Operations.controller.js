@@ -1,6 +1,6 @@
 const {Operation, User} = require("../../db.js");
 
-const postOperation = async(req,res)=>{
+const postOperation = async(req,res ,next)=>{
     let{
         name,
         money,
@@ -27,12 +27,13 @@ const postOperation = async(req,res)=>{
         }
         return res.status(200).send(operationCreate) 
     }catch(error){
+        next(error)
         res.send(error);
     }
 }
 
 
-const getAllOpetations = async(req,res)=>{
+const getAllOpetations = async(req,res, next)=>{
     try{
         const{user} = req.params;
         const allOperations = await Operation.findAll({
@@ -40,12 +41,13 @@ const getAllOpetations = async(req,res)=>{
         });
         return res.status(200).send(allOperations)
     }catch(error){
+        next(error)
         res.send(error);
     }
 }
 
 
-const getIdOperation = async(req , res) =>{
+const getIdOperation = async(req , res ,next) =>{
     try{
         const {idOperation} = req.params;
         const allOperations = await Operation.findAll();
@@ -55,12 +57,13 @@ const getIdOperation = async(req , res) =>{
             : res.status(404).json({error: "Esa operacion no existe" })  
         }
     }catch(error){
+        next(error)
         res.send(error);
     }
 }
 
 
-const deleteOperation = async(req , res) =>{
+const deleteOperation = async(req , res , next) =>{
     try{
         const {idOperation} = req.params;
         const allOperations = await Operation.findAll();
@@ -71,12 +74,13 @@ const deleteOperation = async(req , res) =>{
         }
         return res.status(404).json({error: "no se puede eleminar la operacion"})   
     }catch(error){
+        next(error)
         res.send(error);
     }
 }
 
 
-const modifyOperation = async(req ,res) =>{
+const modifyOperation = async(req ,res , next) =>{
     try{
         const {idOperation} = req.params;
         const {
@@ -97,13 +101,14 @@ const modifyOperation = async(req ,res) =>{
         }
         return res.status(404).json({error:"No esta esa operacion para modificar" })
     }catch(error){
+        next(error)
         res.send(error);
     }
 }
 
 
 
-const getAllIncome = async(req,res) =>{ // ruta para prueba interna
+const getAllIncome = async(req,res , next) =>{ // ruta para prueba interna
     try{
         const allOperations = await Operation.findAll();
         const operationsIncome =  allOperations.filter(el => el.type.toLowerCase() === "ingreso");
@@ -112,12 +117,13 @@ const getAllIncome = async(req,res) =>{ // ruta para prueba interna
         }
         return res.status(404).json({error:"No hay operaciones de ingreso para mostrar"})
     }catch(error){
+        next(error);
         res.send(error);
     }
 }
 
 
-const getAllEgress = async(req,res) =>{ // ruta para prueba interna
+const getAllEgress = async(req,res, next) =>{ // ruta para prueba interna
     try{
         const allOperations = await Operation.findAll();
         const OperationsEgress = allOperations.filter(el => el.type.toLowerCase() === "egreso" )
@@ -126,11 +132,12 @@ const getAllEgress = async(req,res) =>{ // ruta para prueba interna
         }
         return res.status(404).json({error:"No hay operaciones de egresos de dinero" })
     }catch(error){
+        next(error);
         res.send(error);
     }
 }
 
-const getFilterType = async(req,res ) =>{
+const getFilterType = async(req,res ,next ) =>{
     try{
         const{user , type} = req.params;
         if(type === "egresos"){
@@ -152,11 +159,12 @@ const getFilterType = async(req,res ) =>{
         });
         return res.status(200).send(allOperations)
     }catch(error){
+        next(error)
         res.send(error);
     }
 }
 
-const getFilterCategory = async(req, res) => {
+const getFilterCategory = async(req, res, next) => {
     try{
         const{user,category} = req.params; // agarro por destructurin el params de user y de category
         const allOperations = await Operation.findAll({ // traigo solamente lo que tiene type:"egreso" y  tambien que sea idUser:user
@@ -168,6 +176,7 @@ const getFilterCategory = async(req, res) => {
         const operationsFilter =  allOperations.filter(el => el.category.toLowerCase() === category.toLowerCase()  );
         return res.status(200).send(operationsFilter);
     }catch(error){
+        next(error)
         res.send(error);
     }
 }

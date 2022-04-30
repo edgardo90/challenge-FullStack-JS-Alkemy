@@ -14,7 +14,7 @@ const {postOperation,
 
 const {incomeTotal , expenditureTotal , currentBalance} = require("./controller/Balance.controller");
 
-const {postUser, getAllUsers, getUserId} = require("./controller/Users.controller")
+const {postUser, getAllUsers, getUserEmail} = require("./controller/Users.controller")
 
 const router = Router();
 
@@ -36,7 +36,7 @@ router.get("/balance/:user", currentBalance);
 
 router.post("/createUser", postUser);
 router.get("/users",getAllUsers);
-router.get("/users/:email", getUserId);
+router.get("/users/:email", getUserEmail);
 
 
 

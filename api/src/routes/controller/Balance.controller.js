@@ -1,6 +1,6 @@
 const {Operation} = require("../../db.js");
 
-const incomeTotal = async(req,res) =>{
+const incomeTotal = async(req,res , next) =>{
     try{
         const{user} = req.params;
         const allOperations = await Operation.findAll({
@@ -20,12 +20,13 @@ const incomeTotal = async(req,res) =>{
         }
         return res.status(200).send("0")
     }catch(error){
+        next(error);
         res.send(error);
     }
 }
 
 
-const expenditureTotal = async(req,res) =>{
+const expenditureTotal = async(req,res , next) =>{
     try{
         const{user} = req.params;
         const allOperations = await Operation.findAll({
@@ -41,13 +42,14 @@ const expenditureTotal = async(req,res) =>{
         }
         return res.status(200).send("0")
     }catch(error){
+        next(error);
         res.send(error);
     }
 }
 
-
-const incomeAmount = async(user) =>{  
-    const allOperations = await Operation.findAll({ // el user va ser un id que viene por paramas en la funcion currentBalance
+//funcion que se va a utilizar en la funcion currentBalance, (me va dar el total de los ingresos)
+const incomeAmount = async(user) =>{  // el user va ser un id que viene por paramas en la funcion currentBalance
+    const allOperations = await Operation.findAll({ 
         where: {idUser: user}
     });
     const operationsExpenditure = await  allOperations.filter(el => el.type.toLowerCase() === "ingreso");
@@ -61,6 +63,7 @@ const incomeAmount = async(user) =>{
     return 0
 }
 
+//funcion que se va a utilizar en la funcion currentBalance , (me va dar el total de los egresos )
 const expensesAmount = async(user) =>{ // el user va ser un id que viene por paramas en la funcion currentBalance
     const allOperations = await Operation.findAll({
         where:{idUser: user}
@@ -77,7 +80,7 @@ const expensesAmount = async(user) =>{ // el user va ser un id que viene por par
 }
 
 
-const currentBalance = async(req , res) =>{ 
+const currentBalance = async(req , res , next) =>{ 
     try{
         const{user} = req.params
         const income = await incomeAmount(user); // el user que traigo por parmas lo voy a utiilizar en esta funcion
@@ -86,6 +89,7 @@ const currentBalance = async(req , res) =>{
         balance = balance.toString()
         return res.status(200).send(balance)
     }catch(error){
+        next(error);
         res.send(error);
     }
 }
