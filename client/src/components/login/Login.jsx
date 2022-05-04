@@ -80,7 +80,7 @@ export default function Login(){
                     //  required
                     type="text"
                     name="email"
-                    style={{width : "60%"}}
+                    style={{width : "70%"}}
                      value={data.email}
                      onChange={event =>handleChange(event)}
                     />
@@ -95,7 +95,7 @@ export default function Login(){
                     //  required
                     type="password"
                     name="password"
-                    style={{width : "60%"}}
+                    style={{width : "70%"}}
                     value={data.password}
                     onChange={event => handleChange(event)}
                     />

@@ -7,7 +7,7 @@
   margin-left: 5px;
     border: none;
     border-radius: 15px;
-    font-family: 'Cookie', cursive;
+    /* font-family: 'Cookie', cursive; */
     padding-left: 10px;/* agrando el button hacia la izquierda  */
     padding-right: 10px; /* agrando el button hacia la derecha */
     padding-top: 5px; /*agrando el button hacia arriba  */
@@ -44,7 +44,7 @@
     margin-top: 30px;
     font-size: 40px ;
     color: rgb(101, 112, 235);
-    font-family: 'Cookie', cursive;
+    /* font-family: 'Cookie', cursive; */
   }
 
   .box{
@@ -62,7 +62,7 @@
     font-size: 14px; 
     background-position: center center;
     color: rgb(101, 112, 235);
-    font-family: 'Cookie', cursive;
+    /* font-family: 'Cookie', cursive; */
     box-shadow: 2px 2px 3px 2px rgb(93, 92, 92);
     background-color: rgb(204, 218, 218);
     border-radius: 15px;
@@ -84,7 +84,7 @@
     font-size: 14px; 
     background-position: center center;
     color: rgb(101, 112, 235);
-    font-family: 'Cookie', cursive;
+    /* font-family: 'Cookie', cursive; */
     box-shadow: 2px 2px 3px 2px rgb(93, 92, 92);
     background-color: rgb(204, 218, 218);
     border-radius: 15px;
@@ -119,7 +119,7 @@
     border: none;
     border-radius: 15px;
     /* margin-left: 20% ; */
-    font-family: 'Cookie', cursive;
+    /* font-family: 'Cookie', cursive; */
     background-color: rgba(41, 74, 219, 0.842);
     color: black;
     cursor: pointer;
@@ -141,7 +141,7 @@
     justify-content: center;
     margin-top: 30px;
     color: black;
-    font-family: 'Cookie', cursive;
+    /* font-family: 'Cookie', cursive; */
 }
 
 .register:hover{
