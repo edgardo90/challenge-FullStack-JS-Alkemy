@@ -103,7 +103,7 @@ export default function Register(){
 
             <form className={stylesCreate.formulario} onSubmit={event => handleSubmit(event) } >
                 <div>
-                    <label >Ingresa email: </label>
+                    <label >Ingresa tu email: </label>
                     <input
                      type="email"
                      name="email"
