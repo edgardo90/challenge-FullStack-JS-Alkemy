@@ -18,8 +18,8 @@
 
 .button{
     background-color: rgba(233, 142, 119, 0.947);
-    padding-left: 10px;/* agrando el button hacia la izquierda  */
-    padding-right: 10px; /* agrando el button hacia la derecha */
+    padding-left: 7px;/* agrando el button hacia la izquierda  */
+    padding-right: 7px; /* agrando el button hacia la derecha */
     padding-top: 5px; /*agrando el button hacia arriba  */
     padding-bottom: 5px; /* agrando el button hacia abajo */
     border-radius: 15px;
@@ -29,8 +29,8 @@
 .button:hover{   /*cambia el botton cuando el mouse pasa por ahi  */
     background-color: rgb(238, 73, 61);
     color: rgb(249, 249, 249);
-    padding-left: 10px;/* agrando el button hacia la izquierda  */
-    padding-right: 10px; /* agrando el button hacia la derecha */
+    padding-left: 7px;/* agrando el button hacia la izquierda  */
+    padding-right: 7px; /* agrando el button hacia la derecha */
     padding-top: 5px; /*agrando el button hacia arriba  */
     padding-bottom: 5px; /* agrando el button hacia abajo */
     border-radius: 15px;
@@ -39,8 +39,8 @@
 
 .buttonModify{
     background-color: rgba(96, 141, 207, 0.475);
-    padding-left: 10px;/* agrando el button hacia la izquierda  */
-    padding-right: 10px; /* agrando el button hacia la derecha */
+    padding-left: 7px;/* agrando el button hacia la izquierda  */
+    padding-right: 7px; /* agrando el button hacia la derecha */
     padding-top: 5px; /*agrando el button hacia arriba  */
     padding-bottom: 5px; /* agrando el button hacia abajo */
     border-radius: 15px;
@@ -52,8 +52,8 @@
 .buttonModify:hover{
     background-color: rgb(39, 115, 230);
     color: rgb(240, 230, 230);
-    padding-left: 10px;/* agrando el button hacia la izquierda  */
-    padding-right: 10px; /* agrando el button hacia la derecha */
+    padding-left: 7px;/* agrando el button hacia la izquierda  */
+    padding-right: 7px; /* agrando el button hacia la derecha */
     padding-top: 5px; /*agrando el button hacia arriba  */
     padding-bottom: 5px; /* agrando el button hacia abajo */
     border-radius: 15px;
