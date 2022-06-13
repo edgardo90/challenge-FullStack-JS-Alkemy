@@ -114,7 +114,7 @@ export default function Home(){
                     <a href="/home" className={styles.reload} >Presopuesto App </a>
                 </div>
                 <br />
-                <h1 className={styles.h1} >Bienvenido {userByEmail && userByEmail.name}</h1>
+                <h1 className={styles.h1} >Bienbenido {userByEmail && userByEmail.name}</h1>
                 <div className={styles.notOperation} >
                     <img className= {styles.imag} src={loading} alt="Loading" /> 
                     <h2 className={styles.loading}>{time} </h2> 
